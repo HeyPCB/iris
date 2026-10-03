@@ -1,0 +1,9 @@
+# CAD toolchain used to generate everything in cad/out and media (tested versions)
+cadquery==2.8.0
+trimesh==5.1.1
+manifold3d==3.5.4
+numpy>=2.0
+scipy>=1.13
+rtree>=1.2
+pillow>=10.0
+# vtk is installed with cadquery (9.6 tested)

@@ -1,0 +1,3330 @@
+{
+ "generated_by": "cad/check.py",
+ "units": "mm, deg",
+ "method": "* Every part (or sub-solid) is tessellated (chordal tolerance 0.04 mm) and turned into a manifold\n    mesh (manifold3d). For each pair of motion groups, only the degrees of freedom that move one\n    relative to the other are swept (e.g. eye vs upper lid: tilt x pan x upper-lid angle).\n  * Lid angles are swept inside the firmware lid envelope (lids follow gaze: upper = rest + tilt +\n    [-37 (blink) .. +36], lower = rest + 0.5 tilt + [-30 .. +14], clamped to the mechanical ranges);\n    pairs that do not depend on tilt see the full mechanical range.\n  * Per pose: manifold min_gap (exact triangle distance, 3 mm search) and, when touching, the\n    intersection volume. The worst pose of every pair closer than 1.5 mm is re-measured exactly on\n    the B-rep solids (OpenCASCADE BRepExtrema).\n  * Pair types: 'moving' (different groups, >= 0.5 mm required), 'static' (same group, >= 0.3 mm),\n    'contact' (designed contact: fasteners, glued seats; must not interpenetrate > 0.05 mm3) and\n    'joint' (designed running fits: pins in bores, ball links on studs, pivot faces, nested lids;\n    reported with their own expected minimum).",
+ "thresholds": {
+  "moving_mm": 0.5,
+  "static_mm": 0.3
+ },
+ "tessellation_tol_mm": 0.04,
+ "grid": {
+  "tilt": [
+   -30.0,
+   -22.5,
+   -15.0,
+   -7.5,
+   0.0,
+   6.25,
+   12.5,
+   18.75,
+   25.0
+  ],
+  "pan": [
+   -35.0,
+   -26.25,
+   -17.5,
+   -8.75,
+   0.0,
+   8.75,
+   17.5,
+   26.25,
+   35.0
+  ],
+  "up": [
+   -40.0,
+   -35.0,
+   -30.0,
+   -25.0,
+   -20.0,
+   -15.0,
+   -10.0,
+   -5.0,
+   0.0,
+   5.0,
+   10.0,
+   15.0,
+   20.0,
+   25.0,
+   30.0,
+   35.0,
+   40.0,
+   45.0,
+   50.0,
+   55.0
+  ],
+  "lo": [
+   -50.0,
+   -46.0,
+   -42.0,
+   -38.0,
+   -34.0,
+   -30.0,
+   -26.0,
+   -22.0,
+   -18.0,
+   -14.0,
+   -10.0,
+   -6.0
+  ],
+  "brow": [
+   -20.0,
+   -10.0,
+   0.0,
+   10.0,
+   20.0
+  ]
+ },
+ "lid_envelope": {
+  "upper": "clamp(UP_REST + tilt + [-37, 36], [-40.0, 55.0])",
+  "lower": "clamp(LO_REST + 0.5 tilt + [-30, 14], [-50.0, -6.0])"
+ },
+ "pose_evaluations": 80540,
+ "group_pairs_swept": 131,
+ "non_manifold_meshes": [],
+ "summary": {
+  "collisions": 0,
+  "below_threshold": 0,
+  "joint_or_contact_problems": 0,
+  "min_moving": {
+   "a": "brow_hub_L",
+   "b": "servo_brow_L/body",
+   "groups": [
+    "brow_L",
+    "fixed"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.5,
+   "pose": {
+    "brow_L": -20.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.5,
+   "min_mm": 0.5,
+   "pass": true
+  },
+  "min_static": {
+   "a": "nose_block",
+   "b": "servo_tilt/body",
+   "groups": [
+    "fixed",
+    "fixed"
+   ],
+   "type": "static",
+   "required_mm": 0.3,
+   "reason": "",
+   "mesh_min_mm": 0.3,
+   "pose": {},
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.3,
+   "min_mm": 0.3,
+   "pass": true
+  },
+  "pairs_checked": 740
+ },
+ "collisions": [],
+ "below_threshold": [],
+ "joint_or_contact_problems": [],
+ "closest_moving_pairs": [
+  {
+   "a": "brow_hub_L",
+   "b": "servo_brow_L/body",
+   "groups": [
+    "brow_L",
+    "fixed"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.5,
+   "pose": {
+    "brow_L": -20.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.5,
+   "min_mm": 0.5,
+   "pass": true
+  },
+  {
+   "a": "brow_hub_R",
+   "b": "servo_brow_R/body",
+   "groups": [
+    "brow_R",
+    "fixed"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.5,
+   "pose": {
+    "brow_R": -20.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.5,
+   "min_mm": 0.5,
+   "pass": true
+  },
+  {
+   "a": "nose_block",
+   "b": "lidU_stud_R",
+   "groups": [
+    "fixed",
+    "lidU_R"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.503,
+   "pose": {
+    "up_R": -40.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.5,
+   "min_mm": 0.5,
+   "pass": true
+  },
+  {
+   "a": "servo_lidL_L/body",
+   "b": "hornL_L",
+   "groups": [
+    "fixed",
+    "hornL_L"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.5,
+   "pose": {
+    "lo_L": -50.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.5,
+   "min_mm": 0.5,
+   "pass": true
+  },
+  {
+   "a": "servo_lidL_R/body",
+   "b": "hornL_R",
+   "groups": [
+    "fixed",
+    "hornL_R"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.5,
+   "pose": {
+    "lo_R": -50.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.5,
+   "min_mm": 0.5,
+   "pass": true
+  },
+  {
+   "a": "servo_lidU_L/body",
+   "b": "hornU_L",
+   "groups": [
+    "fixed",
+    "hornU_L"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.5,
+   "pose": {
+    "up_L": -40.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.5,
+   "min_mm": 0.5,
+   "pass": true
+  },
+  {
+   "a": "servo_lidU_R/body",
+   "b": "hornU_R",
+   "groups": [
+    "fixed",
+    "hornU_R"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.5,
+   "pose": {
+    "up_R": -40.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.5,
+   "min_mm": 0.5,
+   "pass": true
+  },
+  {
+   "a": "tilt_tongue",
+   "b": "servo_tilt/body",
+   "groups": [
+    "cradle",
+    "fixed"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.5,
+   "pose": {
+    "tilt": -30.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.5,
+   "min_mm": 0.5,
+   "pass": true
+  },
+  {
+   "a": "tilt_tongue",
+   "b": "hornU_L",
+   "groups": [
+    "cradle",
+    "hornU_L"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.5,
+   "pose": {
+    "tilt": -30.0,
+    "up_L": 15.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.5,
+   "min_mm": 0.5,
+   "pass": true
+  },
+  {
+   "a": "lidL_L/shell",
+   "b": "rodL_L",
+   "groups": [
+    "lidL_L",
+    "rodL_L"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.545,
+   "pose": {
+    "lo_L": -22.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.524,
+   "min_mm": 0.524,
+   "pass": true
+  },
+  {
+   "a": "lidL_R/shell",
+   "b": "rodL_R",
+   "groups": [
+    "lidL_R",
+    "rodL_R"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.56,
+   "pose": {
+    "lo_R": -50.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.524,
+   "min_mm": 0.524,
+   "pass": true
+  },
+  {
+   "a": "servo_lidL_R/body",
+   "b": "hornL_L",
+   "groups": [
+    "fixed",
+    "hornL_L"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.55,
+   "pose": {
+    "lo_L": -50.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.55,
+   "min_mm": 0.55,
+   "pass": true
+  },
+  {
+   "a": "servo_lidU_L/body",
+   "b": "hornU_R",
+   "groups": [
+    "fixed",
+    "hornU_R"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.55,
+   "pose": {
+    "up_R": 35.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.55,
+   "min_mm": 0.55,
+   "pass": true
+  },
+  {
+   "a": "nose_block",
+   "b": "lidL_R/shell",
+   "groups": [
+    "fixed",
+    "lidL_R"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.562,
+   "pose": {
+    "lo_R": -50.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.562,
+   "min_mm": 0.562,
+   "pass": true
+  },
+  {
+   "a": "nose_block",
+   "b": "lidL_stud_R",
+   "groups": [
+    "fixed",
+    "lidL_R"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.598,
+   "pose": {
+    "lo_R": -50.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.596,
+   "min_mm": 0.596,
+   "pass": true
+  },
+  {
+   "a": "brow_L",
+   "b": "face_shell",
+   "groups": [
+    "brow_L",
+    "fixed"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.6,
+   "pose": {
+    "brow_L": -20.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.6,
+   "min_mm": 0.6,
+   "pass": true
+  },
+  {
+   "a": "brow_R",
+   "b": "face_shell",
+   "groups": [
+    "brow_R",
+    "fixed"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.6,
+   "pose": {
+    "brow_R": -20.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.6,
+   "min_mm": 0.6,
+   "pass": true
+  },
+  {
+   "a": "cornea_L",
+   "b": "lidU_L/shell",
+   "groups": [
+    "eye_L",
+    "lidU_L"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.568,
+   "pose": {
+    "tilt": 6.25,
+    "pan_L": -35.0,
+    "up_L": -5.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.6,
+   "min_mm": 0.6,
+   "pass": true
+  },
+  {
+   "a": "cornea_R",
+   "b": "lidU_R/shell",
+   "groups": [
+    "eye_R",
+    "lidU_R"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.568,
+   "pose": {
+    "tilt": 6.25,
+    "pan_R": 35.0,
+    "up_R": -5.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.6,
+   "min_mm": 0.6,
+   "pass": true
+  },
+  {
+   "a": "fork_L",
+   "b": "sclera_L/shell",
+   "groups": [
+    "cradle",
+    "eye_L"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.6,
+   "pose": {
+    "tilt": 18.75,
+    "pan_L": 0.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.6,
+   "min_mm": 0.6,
+   "pass": true
+  },
+  {
+   "a": "fork_R",
+   "b": "sclera_R/shell",
+   "groups": [
+    "cradle",
+    "eye_R"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.6,
+   "pose": {
+    "tilt": 18.75,
+    "pan_R": 0.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.6,
+   "min_mm": 0.6,
+   "pass": true
+  },
+  {
+   "a": "pan_crank_L",
+   "b": "pan_coupler_L",
+   "groups": [
+    "crank_L",
+    "pcoup_L"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.6,
+   "pose": {
+    "tilt": 18.75,
+    "pan_L": 17.5
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.6,
+   "min_mm": 0.6,
+   "pass": true
+  },
+  {
+   "a": "pan_crank_R",
+   "b": "pan_coupler_R",
+   "groups": [
+    "crank_R",
+    "pcoup_R"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.6,
+   "pose": {
+    "tilt": 18.75,
+    "pan_R": -17.5
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.6,
+   "min_mm": 0.6,
+   "pass": true
+  },
+  {
+   "a": "sclera_L/shell",
+   "b": "pan_coupler_L",
+   "groups": [
+    "eye_L",
+    "pcoup_L"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.6,
+   "pose": {
+    "tilt": 25.0,
+    "pan_L": 26.25
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.6,
+   "min_mm": 0.6,
+   "pass": true
+  },
+  {
+   "a": "sclera_R/shell",
+   "b": "pan_coupler_R",
+   "groups": [
+    "eye_R",
+    "pcoup_R"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.6,
+   "pose": {
+    "tilt": 25.0,
+    "pan_R": -26.25
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.6,
+   "min_mm": 0.6,
+   "pass": true
+  },
+  {
+   "a": "servo_pan_L/body",
+   "b": "pan_crank_L",
+   "groups": [
+    "cradle",
+    "crank_L"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.6,
+   "pose": {
+    "tilt": -30.0,
+    "pan_L": -35.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.6,
+   "min_mm": 0.6,
+   "pass": true
+  },
+  {
+   "a": "servo_pan_R/body",
+   "b": "pan_crank_R",
+   "groups": [
+    "cradle",
+    "crank_R"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.6,
+   "pose": {
+    "tilt": -30.0,
+    "pan_R": 35.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.6,
+   "min_mm": 0.6,
+   "pass": true
+  },
+  {
+   "a": "temporal_pin_L",
+   "b": "temple_pin_L",
+   "groups": [
+    "cradle",
+    "fixed"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.6,
+   "pose": {
+    "tilt": -30.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.6,
+   "min_mm": 0.6,
+   "pass": true
+  },
+  {
+   "a": "temporal_pin_R",
+   "b": "temple_pin_R",
+   "groups": [
+    "cradle",
+    "fixed"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.6,
+   "pose": {
+    "tilt": -30.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.6,
+   "min_mm": 0.6,
+   "pass": true
+  },
+  {
+   "a": "tilt_tongue",
+   "b": "lidL_L/shell",
+   "groups": [
+    "cradle",
+    "lidL_L"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.662,
+   "pose": {
+    "tilt": -30.0,
+    "lo_L": -50.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.662,
+   "min_mm": 0.662,
+   "pass": true
+  },
+  {
+   "a": "nose_block",
+   "b": "rodU_R",
+   "groups": [
+    "fixed",
+    "rodU_R"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.78,
+   "pose": {
+    "up_R": 55.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.78,
+   "min_mm": 0.78,
+   "pass": true
+  },
+  {
+   "a": "tilt_tongue",
+   "b": "rodU_L",
+   "groups": [
+    "cradle",
+    "rodU_L"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.783,
+   "pose": {
+    "tilt": 0.0,
+    "up_L": 55.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.782,
+   "min_mm": 0.782,
+   "pass": true
+  },
+  {
+   "a": "tilt_tongue",
+   "b": "lidU_stud_L",
+   "groups": [
+    "cradle",
+    "lidU_L"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.803,
+   "pose": {
+    "tilt": -30.0,
+    "up_L": -40.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.8,
+   "min_mm": 0.8,
+   "pass": true
+  },
+  {
+   "a": "fork_L",
+   "b": "carrier_L",
+   "groups": [
+    "cradle",
+    "eye_L"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.834,
+   "pose": {
+    "tilt": 6.25,
+    "pan_L": 35.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.834,
+   "min_mm": 0.834,
+   "pass": true
+  },
+  {
+   "a": "fork_R",
+   "b": "carrier_R",
+   "groups": [
+    "cradle",
+    "eye_R"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.834,
+   "pose": {
+    "tilt": 12.5,
+    "pan_R": -35.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.834,
+   "min_mm": 0.834,
+   "pass": true
+  },
+  {
+   "a": "servo_lidU_L/body",
+   "b": "hornU_stud_R",
+   "groups": [
+    "fixed",
+    "hornU_R"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.85,
+   "pose": {
+    "up_R": 45.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.85,
+   "min_mm": 0.85,
+   "pass": true
+  },
+  {
+   "a": "tilt_tongue",
+   "b": "hornU_stud_L",
+   "groups": [
+    "cradle",
+    "hornU_L"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.882,
+   "pose": {
+    "tilt": -30.0,
+    "up_L": 25.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.882,
+   "min_mm": 0.882,
+   "pass": true
+  },
+  {
+   "a": "servo_lidL_R/body",
+   "b": "hornL_stud_L",
+   "groups": [
+    "fixed",
+    "hornL_L"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.894,
+   "pose": {
+    "lo_L": -50.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.894,
+   "min_mm": 0.894,
+   "pass": true
+  },
+  {
+   "a": "lidL_L/shell",
+   "b": "rodU_L",
+   "groups": [
+    "lidL_L",
+    "rodU_L"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.901,
+   "pose": {
+    "lo_L": -50.0,
+    "up_L": 55.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.9,
+   "min_mm": 0.9,
+   "pass": true
+  },
+  {
+   "a": "lidL_R/shell",
+   "b": "rodU_R",
+   "groups": [
+    "lidL_R",
+    "rodU_R"
+   ],
+   "type": "moving",
+   "required_mm": 0.5,
+   "reason": "",
+   "mesh_min_mm": 0.901,
+   "pose": {
+    "lo_R": -50.0,
+    "up_R": 55.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.9,
+   "min_mm": 0.9,
+   "pass": true
+  }
+ ],
+ "closest_static_pairs": [
+  {
+   "a": "nose_block",
+   "b": "servo_tilt/body",
+   "groups": [
+    "fixed",
+    "fixed"
+   ],
+   "type": "static",
+   "required_mm": 0.3,
+   "reason": "",
+   "mesh_min_mm": 0.3,
+   "pose": {},
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.3,
+   "min_mm": 0.3,
+   "pass": true
+  },
+  {
+   "a": "sclera_L/bosses",
+   "b": "carrier_L",
+   "groups": [
+    "eye_L",
+    "eye_L"
+   ],
+   "type": "static",
+   "required_mm": 0.3,
+   "reason": "",
+   "mesh_min_mm": 0.3,
+   "pose": {},
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.3,
+   "min_mm": 0.3,
+   "pass": true
+  },
+  {
+   "a": "sclera_R/bosses",
+   "b": "carrier_R",
+   "groups": [
+    "eye_R",
+    "eye_R"
+   ],
+   "type": "static",
+   "required_mm": 0.3,
+   "reason": "",
+   "mesh_min_mm": 0.3,
+   "pose": {},
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.3,
+   "min_mm": 0.3,
+   "pass": true
+  },
+  {
+   "a": "side_plate_L",
+   "b": "face_shell",
+   "groups": [
+    "fixed",
+    "fixed"
+   ],
+   "type": "static",
+   "required_mm": 0.3,
+   "reason": "",
+   "mesh_min_mm": 0.4,
+   "pose": {},
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.4,
+   "min_mm": 0.4,
+   "pass": true
+  },
+  {
+   "a": "side_plate_R",
+   "b": "face_shell",
+   "groups": [
+    "fixed",
+    "fixed"
+   ],
+   "type": "static",
+   "required_mm": 0.3,
+   "reason": "",
+   "mesh_min_mm": 0.4,
+   "pose": {},
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.4,
+   "min_mm": 0.4,
+   "pass": true
+  },
+  {
+   "a": "spine",
+   "b": "B1_env/b",
+   "groups": [
+    "cradle",
+    "cradle"
+   ],
+   "type": "static",
+   "required_mm": 0.3,
+   "reason": "",
+   "mesh_min_mm": 0.4,
+   "pose": {},
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.4,
+   "min_mm": 0.4,
+   "pass": true
+  },
+  {
+   "a": "base_plate",
+   "b": "B2_env/b",
+   "groups": [
+    "fixed",
+    "fixed"
+   ],
+   "type": "static",
+   "required_mm": 0.3,
+   "reason": "",
+   "mesh_min_mm": 0.5,
+   "pose": {},
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.5,
+   "min_mm": 0.5,
+   "pass": true
+  },
+  {
+   "a": "face_shell",
+   "b": "B4_env/f",
+   "groups": [
+    "fixed",
+    "fixed"
+   ],
+   "type": "static",
+   "required_mm": 0.3,
+   "reason": "",
+   "mesh_min_mm": 0.5,
+   "pose": {},
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.5,
+   "min_mm": 0.5,
+   "pass": true
+  },
+  {
+   "a": "servo_tilt/body",
+   "b": "nasal_pin_R",
+   "groups": [
+    "fixed",
+    "fixed"
+   ],
+   "type": "static",
+   "required_mm": 0.3,
+   "reason": "",
+   "mesh_min_mm": 0.5,
+   "pose": {},
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.5,
+   "min_mm": 0.5,
+   "pass": true
+  },
+  {
+   "a": "spine",
+   "b": "tilt_tongue",
+   "groups": [
+    "cradle",
+    "cradle"
+   ],
+   "type": "static",
+   "required_mm": 0.3,
+   "reason": "",
+   "mesh_min_mm": 0.5,
+   "pose": {},
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.5,
+   "min_mm": 0.5,
+   "pass": true
+  },
+  {
+   "a": "temporal_pin_R",
+   "b": "bearing_R",
+   "groups": [
+    "cradle",
+    "cradle"
+   ],
+   "type": "static",
+   "required_mm": 0.3,
+   "reason": "",
+   "mesh_min_mm": 0.5,
+   "pose": {},
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.5,
+   "min_mm": 0.5,
+   "pass": true
+  },
+  {
+   "a": "column",
+   "b": "speaker",
+   "groups": [
+    "fixed",
+    "fixed"
+   ],
+   "type": "static",
+   "required_mm": 0.3,
+   "reason": "",
+   "mesh_min_mm": 0.6,
+   "pose": {},
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.6,
+   "min_mm": 0.6,
+   "pass": true
+  },
+  {
+   "a": "back_cover",
+   "b": "B2_env/board",
+   "groups": [
+    "fixed",
+    "fixed"
+   ],
+   "type": "static",
+   "required_mm": 0.3,
+   "reason": "",
+   "mesh_min_mm": 1.0,
+   "pose": {},
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 1.0,
+   "min_mm": 1.0,
+   "pass": true
+  },
+  {
+   "a": "back_cover",
+   "b": "B2_env/f",
+   "groups": [
+    "fixed",
+    "fixed"
+   ],
+   "type": "static",
+   "required_mm": 0.3,
+   "reason": "",
+   "mesh_min_mm": 1.0,
+   "pose": {},
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 1.0,
+   "min_mm": 1.0,
+   "pass": true
+  },
+  {
+   "a": "back_cover",
+   "b": "B2_env/b",
+   "groups": [
+    "fixed",
+    "fixed"
+   ],
+   "type": "static",
+   "required_mm": 0.3,
+   "reason": "",
+   "mesh_min_mm": 1.0,
+   "pose": {},
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 1.0,
+   "min_mm": 1.0,
+   "pass": true
+  },
+  {
+   "a": "spine",
+   "b": "B1_env/f",
+   "groups": [
+    "cradle",
+    "cradle"
+   ],
+   "type": "static",
+   "required_mm": 0.3,
+   "reason": "",
+   "mesh_min_mm": 1.0,
+   "pose": {},
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 1.0,
+   "min_mm": 1.0,
+   "pass": true
+  },
+  {
+   "a": "top_bridge",
+   "b": "back_cover",
+   "groups": [
+    "fixed",
+    "fixed"
+   ],
+   "type": "static",
+   "required_mm": 0.3,
+   "reason": "",
+   "mesh_min_mm": 1.056,
+   "pose": {},
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 1.06,
+   "min_mm": 1.06,
+   "pass": true
+  },
+  {
+   "a": "top_bridge",
+   "b": "face_shell",
+   "groups": [
+    "fixed",
+    "fixed"
+   ],
+   "type": "static",
+   "required_mm": 0.3,
+   "reason": "",
+   "mesh_min_mm": 1.056,
+   "pose": {},
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 1.06,
+   "min_mm": 1.06,
+   "pass": true
+  },
+  {
+   "a": "servo_lidL_R/body",
+   "b": "servo_lidL_L/body",
+   "groups": [
+    "fixed",
+    "fixed"
+   ],
+   "type": "static",
+   "required_mm": 0.3,
+   "reason": "",
+   "mesh_min_mm": 1.4,
+   "pose": {},
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 1.4,
+   "min_mm": 1.4,
+   "pass": true
+  },
+  {
+   "a": "servo_lidU_R/body",
+   "b": "servo_lidU_L/body",
+   "groups": [
+    "fixed",
+    "fixed"
+   ],
+   "type": "static",
+   "required_mm": 0.3,
+   "reason": "",
+   "mesh_min_mm": 1.4,
+   "pose": {},
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 1.4,
+   "min_mm": 1.4,
+   "pass": true
+  },
+  {
+   "a": "sclera_L/shell",
+   "b": "B3_env_L/board",
+   "groups": [
+    "eye_L",
+    "eye_L"
+   ],
+   "type": "static",
+   "required_mm": 0.3,
+   "reason": "",
+   "mesh_min_mm": 1.463,
+   "pose": {},
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 1.49,
+   "min_mm": 1.49,
+   "pass": true
+  },
+  {
+   "a": "sclera_R/shell",
+   "b": "B3_env_R/board",
+   "groups": [
+    "eye_R",
+    "eye_R"
+   ],
+   "type": "static",
+   "required_mm": 0.3,
+   "reason": "",
+   "mesh_min_mm": 1.463,
+   "pose": {},
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 1.49,
+   "min_mm": 1.49,
+   "pass": true
+  },
+  {
+   "a": "face_shell",
+   "b": "temple_pin_R",
+   "groups": [
+    "fixed",
+    "fixed"
+   ],
+   "type": "static",
+   "required_mm": 0.3,
+   "reason": "",
+   "mesh_min_mm": 1.5,
+   "pose": {},
+   "overlap_mm3": 0.0,
+   "min_mm": 1.5,
+   "pass": true
+  },
+  {
+   "a": "face_shell",
+   "b": "temple_pin_L",
+   "groups": [
+    "fixed",
+    "fixed"
+   ],
+   "type": "static",
+   "required_mm": 0.3,
+   "reason": "",
+   "mesh_min_mm": 1.5,
+   "pose": {},
+   "overlap_mm3": 0.0,
+   "min_mm": 1.5,
+   "pass": true
+  },
+  {
+   "a": "side_plate_L",
+   "b": "back_cover",
+   "groups": [
+    "fixed",
+    "fixed"
+   ],
+   "type": "static",
+   "required_mm": 0.3,
+   "reason": "",
+   "mesh_min_mm": 1.499,
+   "pose": {},
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 1.5,
+   "min_mm": 1.5,
+   "pass": true
+  }
+ ],
+ "joints": [
+  {
+   "a": "bearing_R",
+   "b": "temple_pin_R",
+   "groups": [
+    "cradle",
+    "fixed"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "bearing on the pin",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "tilt": -30.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "brow_hub_L",
+   "b": "servo_brow_L/spline",
+   "groups": [
+    "brow_L",
+    "fixed"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "hub on the spline",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "brow_L": -20.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "brow_hub_R",
+   "b": "servo_brow_R/spline",
+   "groups": [
+    "brow_R",
+    "fixed"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "hub on the spline",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "brow_R": -20.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "crank_stud_L",
+   "b": "pan_coupler_L",
+   "groups": [
+    "crank_L",
+    "pcoup_L"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "ball joint",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "tilt": -30.0,
+    "pan_L": -35.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "crank_stud_R",
+   "b": "pan_coupler_R",
+   "groups": [
+    "crank_R",
+    "pcoup_R"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "ball joint",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "tilt": -30.0,
+    "pan_R": -35.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "hornL_stud_L",
+   "b": "rodL_L",
+   "groups": [
+    "hornL_L",
+    "rodL_L"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "ball joint",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "lo_L": -50.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "hornL_stud_R",
+   "b": "rodL_R",
+   "groups": [
+    "hornL_R",
+    "rodL_R"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "ball joint",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "lo_R": -50.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "hornU_stud_L",
+   "b": "rodU_L",
+   "groups": [
+    "hornU_L",
+    "rodU_L"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "ball joint",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "up_L": -40.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "hornU_stud_R",
+   "b": "rodU_R",
+   "groups": [
+    "hornU_R",
+    "rodU_R"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "ball joint",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "up_R": -40.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "keel_stud_L",
+   "b": "pan_coupler_L",
+   "groups": [
+    "eye_L",
+    "pcoup_L"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "ball joint",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "tilt": -30.0,
+    "pan_L": -35.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "keel_stud_R",
+   "b": "pan_coupler_R",
+   "groups": [
+    "eye_R",
+    "pcoup_R"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "ball joint",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "tilt": -30.0,
+    "pan_R": -35.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "lidL_stud_L",
+   "b": "rodL_L",
+   "groups": [
+    "lidL_L",
+    "rodL_L"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "ball joint",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "lo_L": -50.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "lidL_stud_R",
+   "b": "rodL_R",
+   "groups": [
+    "lidL_R",
+    "rodL_R"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "ball joint",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "lo_R": -50.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "lidU_stud_L",
+   "b": "rodL_L",
+   "groups": [
+    "lidU_L",
+    "rodL_L"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "ball joint",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "lo_L": -50.0,
+    "up_L": -35.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "lidU_stud_L",
+   "b": "rodU_L",
+   "groups": [
+    "lidU_L",
+    "rodU_L"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "ball joint",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "up_L": -40.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "lidU_stud_R",
+   "b": "rodL_R",
+   "groups": [
+    "lidU_R",
+    "rodL_R"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "ball joint",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "lo_R": -50.0,
+    "up_R": -35.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "lidU_stud_R",
+   "b": "rodU_R",
+   "groups": [
+    "lidU_R",
+    "rodU_R"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "ball joint",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "up_R": -40.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "nasal_pin_L",
+   "b": "servo_tilt/spline",
+   "groups": [
+    "cradle",
+    "fixed"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "coaxial, both turn with the tilt output",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "tilt": -30.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "nasal_pin_L",
+   "b": "lidL_L/shell",
+   "groups": [
+    "cradle",
+    "lidL_L"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "lid hub on its pin",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "tilt": -30.0,
+    "lo_L": -50.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "nasal_pin_L",
+   "b": "lidL_L/boss",
+   "groups": [
+    "cradle",
+    "lidL_L"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "lid hub on its pin",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "tilt": -30.0,
+    "lo_L": -50.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "nasal_pin_L",
+   "b": "lidU_L/shell",
+   "groups": [
+    "cradle",
+    "lidU_L"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "lid hub on its pin",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "tilt": -30.0,
+    "up_L": -40.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "nasal_pin_L",
+   "b": "lidU_L/boss",
+   "groups": [
+    "cradle",
+    "lidU_L"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "lid hub on its pin",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "tilt": -30.0,
+    "up_L": -40.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "nasal_pin_R",
+   "b": "lidL_R/shell",
+   "groups": [
+    "fixed",
+    "lidL_R"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "lid hub on its pin",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "lo_R": -50.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "nasal_pin_R",
+   "b": "lidL_R/boss",
+   "groups": [
+    "fixed",
+    "lidL_R"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "lid hub on its pin",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "lo_R": -50.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "nasal_pin_R",
+   "b": "lidU_R/shell",
+   "groups": [
+    "fixed",
+    "lidU_R"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "lid hub on its pin",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "up_R": -40.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "nasal_pin_R",
+   "b": "lidU_R/boss",
+   "groups": [
+    "fixed",
+    "lidU_R"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "lid hub on its pin",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "up_R": -40.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "pole_pins_L",
+   "b": "sclera_L/shell",
+   "groups": [
+    "cradle",
+    "eye_L"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "pole pin passes the shell bore",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "tilt": -30.0,
+    "pan_L": -35.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "pole_pins_L",
+   "b": "sclera_L/bosses",
+   "groups": [
+    "cradle",
+    "eye_L"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "pan pivot: pin runs in the boss bore",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "tilt": -30.0,
+    "pan_L": -35.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "pole_pins_R",
+   "b": "sclera_R/shell",
+   "groups": [
+    "cradle",
+    "eye_R"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "pole pin passes the shell bore",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "tilt": -30.0,
+    "pan_R": -35.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "pole_pins_R",
+   "b": "sclera_R/bosses",
+   "groups": [
+    "cradle",
+    "eye_R"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "pan pivot: pin runs in the boss bore",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "tilt": -30.0,
+    "pan_R": -35.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "servo_lidL_L/spline",
+   "b": "hornL_L",
+   "groups": [
+    "fixed",
+    "hornL_L"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "horn on the spline",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "lo_L": -50.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "servo_lidL_L/spline",
+   "b": "hornL_stud_L",
+   "groups": [
+    "fixed",
+    "hornL_L"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "horn on the spline",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "lo_L": -50.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "servo_lidL_R/spline",
+   "b": "hornL_R",
+   "groups": [
+    "fixed",
+    "hornL_R"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "horn on the spline",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "lo_R": -50.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "servo_lidL_R/spline",
+   "b": "hornL_stud_R",
+   "groups": [
+    "fixed",
+    "hornL_R"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "horn on the spline",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "lo_R": -50.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "servo_lidU_L/spline",
+   "b": "hornU_L",
+   "groups": [
+    "fixed",
+    "hornU_L"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "horn on the spline",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "up_L": -40.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "servo_lidU_L/spline",
+   "b": "hornU_stud_L",
+   "groups": [
+    "fixed",
+    "hornU_L"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "horn on the spline",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "up_L": -40.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "servo_lidU_R/spline",
+   "b": "hornU_R",
+   "groups": [
+    "fixed",
+    "hornU_R"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "horn on the spline",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "up_R": -40.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "servo_lidU_R/spline",
+   "b": "hornU_stud_R",
+   "groups": [
+    "fixed",
+    "hornU_R"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "horn on the spline",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "up_R": -40.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "servo_pan_L/spline",
+   "b": "pan_crank_L",
+   "groups": [
+    "cradle",
+    "crank_L"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "crank on the spline",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "tilt": -30.0,
+    "pan_L": -35.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "servo_pan_R/spline",
+   "b": "pan_crank_R",
+   "groups": [
+    "cradle",
+    "crank_R"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "crank on the spline",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "tilt": -30.0,
+    "pan_R": -35.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "temple_arm_L",
+   "b": "temple_pin_L",
+   "groups": [
+    "cradle",
+    "fixed"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "loose bushing, 0.2 mm diametral play",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "tilt": -30.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "temple_arm_R",
+   "b": "temple_pin_R",
+   "groups": [
+    "cradle",
+    "fixed"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "MR63ZZ seat around the temple pin",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "tilt": -30.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "temporal_pin_L",
+   "b": "lidL_L/shell",
+   "groups": [
+    "cradle",
+    "lidL_L"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "lid hub on its pin",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "tilt": -30.0,
+    "lo_L": -50.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "temporal_pin_L",
+   "b": "lidU_L/shell",
+   "groups": [
+    "cradle",
+    "lidU_L"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "lid hub on its pin",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "tilt": -30.0,
+    "up_L": -40.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "temporal_pin_R",
+   "b": "lidL_R/shell",
+   "groups": [
+    "cradle",
+    "lidL_R"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "lid hub on its pin",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "tilt": -30.0,
+    "lo_R": -50.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "temporal_pin_R",
+   "b": "lidU_R/shell",
+   "groups": [
+    "cradle",
+    "lidU_R"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "lid hub on its pin",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "tilt": -30.0,
+    "up_R": -40.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "tilt_tongue",
+   "b": "servo_tilt/spline",
+   "groups": [
+    "cradle",
+    "fixed"
+   ],
+   "type": "joint",
+   "required_mm": 0.0,
+   "reason": "P8 clamps the tilt spline",
+   "mesh_min_mm": 0.0,
+   "pose": {
+    "tilt": -30.0
+   },
+   "overlap_mm3": 0.0,
+   "min_mm": 0.0,
+   "pass": true
+  },
+  {
+   "a": "hornL_L",
+   "b": "rodL_L",
+   "groups": [
+    "hornL_L",
+    "rodL_L"
+   ],
+   "type": "joint",
+   "required_mm": 0.15,
+   "reason": "ball-link face on its own horn",
+   "mesh_min_mm": 0.2,
+   "pose": {
+    "lo_L": -50.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.2,
+   "min_mm": 0.2,
+   "pass": true
+  },
+  {
+   "a": "hornL_R",
+   "b": "rodL_R",
+   "groups": [
+    "hornL_R",
+    "rodL_R"
+   ],
+   "type": "joint",
+   "required_mm": 0.15,
+   "reason": "ball-link face on its own horn",
+   "mesh_min_mm": 0.2,
+   "pose": {
+    "lo_R": -50.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.2,
+   "min_mm": 0.2,
+   "pass": true
+  },
+  {
+   "a": "hornU_L",
+   "b": "rodU_L",
+   "groups": [
+    "hornU_L",
+    "rodU_L"
+   ],
+   "type": "joint",
+   "required_mm": 0.15,
+   "reason": "ball-link face on its own horn",
+   "mesh_min_mm": 0.2,
+   "pose": {
+    "up_L": -40.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.2,
+   "min_mm": 0.2,
+   "pass": true
+  },
+  {
+   "a": "hornU_R",
+   "b": "rodU_R",
+   "groups": [
+    "hornU_R",
+    "rodU_R"
+   ],
+   "type": "joint",
+   "required_mm": 0.15,
+   "reason": "ball-link face on its own horn",
+   "mesh_min_mm": 0.2,
+   "pose": {
+    "up_R": -40.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.2,
+   "min_mm": 0.2,
+   "pass": true
+  },
+  {
+   "a": "lidL_L/boss",
+   "b": "rodL_L",
+   "groups": [
+    "lidL_L",
+    "rodL_L"
+   ],
+   "type": "joint",
+   "required_mm": 0.15,
+   "reason": "ball-link face on its own boss",
+   "mesh_min_mm": 0.2,
+   "pose": {
+    "lo_L": -50.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.2,
+   "min_mm": 0.2,
+   "pass": true
+  },
+  {
+   "a": "lidL_L/shell",
+   "b": "lidU_L/shell",
+   "groups": [
+    "lidL_L",
+    "lidU_L"
+   ],
+   "type": "joint",
+   "required_mm": 0.15,
+   "reason": "nested lid shells, designed 0.2 mm (spec 2.5)",
+   "mesh_min_mm": 0.163,
+   "pose": {
+    "lo_L": -22.0,
+    "up_L": -30.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.2,
+   "min_mm": 0.2,
+   "pass": true
+  },
+  {
+   "a": "lidL_R/boss",
+   "b": "rodL_R",
+   "groups": [
+    "lidL_R",
+    "rodL_R"
+   ],
+   "type": "joint",
+   "required_mm": 0.15,
+   "reason": "ball-link face on its own boss",
+   "mesh_min_mm": 0.2,
+   "pose": {
+    "lo_R": -50.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.2,
+   "min_mm": 0.2,
+   "pass": true
+  },
+  {
+   "a": "lidL_R/shell",
+   "b": "lidU_R/shell",
+   "groups": [
+    "lidL_R",
+    "lidU_R"
+   ],
+   "type": "joint",
+   "required_mm": 0.15,
+   "reason": "nested lid shells, designed 0.2 mm (spec 2.5)",
+   "mesh_min_mm": 0.162,
+   "pose": {
+    "lo_R": -22.0,
+    "up_R": -30.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.2,
+   "min_mm": 0.2,
+   "pass": true
+  },
+  {
+   "a": "lidU_L/boss",
+   "b": "rodU_L",
+   "groups": [
+    "lidU_L",
+    "rodU_L"
+   ],
+   "type": "joint",
+   "required_mm": 0.15,
+   "reason": "ball-link face on its own boss",
+   "mesh_min_mm": 0.2,
+   "pose": {
+    "up_L": -40.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.2,
+   "min_mm": 0.2,
+   "pass": true
+  },
+  {
+   "a": "lidU_R/boss",
+   "b": "rodU_R",
+   "groups": [
+    "lidU_R",
+    "rodU_R"
+   ],
+   "type": "joint",
+   "required_mm": 0.15,
+   "reason": "ball-link face on its own boss",
+   "mesh_min_mm": 0.2,
+   "pose": {
+    "up_R": -40.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.2,
+   "min_mm": 0.2,
+   "pass": true
+  },
+  {
+   "a": "fork_L",
+   "b": "sclera_L/bosses",
+   "groups": [
+    "cradle",
+    "eye_L"
+   ],
+   "type": "joint",
+   "required_mm": 0.25,
+   "reason": "pan pivot axial running gap (boss face to fork arm)",
+   "mesh_min_mm": 0.3,
+   "pose": {
+    "tilt": -30.0,
+    "pan_L": -26.25
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.3,
+   "min_mm": 0.3,
+   "pass": true
+  },
+  {
+   "a": "fork_R",
+   "b": "sclera_R/bosses",
+   "groups": [
+    "cradle",
+    "eye_R"
+   ],
+   "type": "joint",
+   "required_mm": 0.25,
+   "reason": "pan pivot axial running gap (boss face to fork arm)",
+   "mesh_min_mm": 0.3,
+   "pose": {
+    "tilt": -22.5,
+    "pan_R": 35.0
+   },
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.3,
+   "min_mm": 0.3,
+   "pass": true
+  }
+ ],
+ "named_poses": {
+  "rest": {
+   "pose": {
+    "tilt": 0,
+    "pan_R": 0,
+    "pan_L": 0,
+    "up_R": 19.0,
+    "up_L": 19.0,
+    "lo_R": -20.0,
+    "lo_L": -20.0
+   },
+   "min_moving_mm": 0.5,
+   "closest_pairs": [
+    [
+     0.5,
+     "tilt_tongue",
+     "servo_tilt/body"
+    ],
+    [
+     0.503,
+     "nose_block",
+     "lidU_stud_R"
+    ],
+    [
+     0.545,
+     "lidL_L/shell",
+     "rodL_L"
+    ],
+    [
+     0.56,
+     "lidL_R/shell",
+     "rodL_R"
+    ],
+    [
+     0.562,
+     "nose_block",
+     "lidL_R/shell"
+    ],
+    [
+     0.6,
+     "brow_L",
+     "face_shell"
+    ]
+   ],
+   "collisions": []
+  },
+  "down30_pan-35_blink": {
+   "pose": {
+    "tilt": -30,
+    "pan_R": -35,
+    "pan_L": -35,
+    "up_R": -40,
+    "up_L": -40,
+    "lo_R": -35,
+    "lo_L": -35
+   },
+   "min_moving_mm": 0.5,
+   "closest_pairs": [
+    [
+     0.5,
+     "tilt_tongue",
+     "servo_tilt/body"
+    ],
+    [
+     0.503,
+     "nose_block",
+     "lidU_stud_R"
+    ],
+    [
+     0.545,
+     "lidL_L/shell",
+     "rodL_L"
+    ],
+    [
+     0.56,
+     "lidL_R/shell",
+     "rodL_R"
+    ],
+    [
+     0.562,
+     "nose_block",
+     "lidL_R/shell"
+    ],
+    [
+     0.572,
+     "cornea_L",
+     "lidU_L/shell"
+    ]
+   ],
+   "collisions": []
+  },
+  "down30_pan-35_blink_vergence": {
+   "pose": {
+    "tilt": -30,
+    "pan_R": -35,
+    "pan_L": 35,
+    "up_R": -40,
+    "up_L": -40,
+    "lo_R": -35,
+    "lo_L": -35
+   },
+   "min_moving_mm": 0.5,
+   "closest_pairs": [
+    [
+     0.5,
+     "tilt_tongue",
+     "servo_tilt/body"
+    ],
+    [
+     0.503,
+     "nose_block",
+     "lidU_stud_R"
+    ],
+    [
+     0.545,
+     "lidL_L/shell",
+     "rodL_L"
+    ],
+    [
+     0.56,
+     "lidL_R/shell",
+     "rodL_R"
+    ],
+    [
+     0.562,
+     "nose_block",
+     "lidL_R/shell"
+    ],
+    [
+     0.572,
+     "cornea_L",
+     "lidU_L/shell"
+    ]
+   ],
+   "collisions": []
+  },
+  "down30_pan+35_blink": {
+   "pose": {
+    "tilt": -30,
+    "pan_R": 35,
+    "pan_L": 35,
+    "up_R": -40,
+    "up_L": -40,
+    "lo_R": -35,
+    "lo_L": -35
+   },
+   "min_moving_mm": 0.5,
+   "closest_pairs": [
+    [
+     0.5,
+     "tilt_tongue",
+     "servo_tilt/body"
+    ],
+    [
+     0.503,
+     "nose_block",
+     "lidU_stud_R"
+    ],
+    [
+     0.545,
+     "lidL_L/shell",
+     "rodL_L"
+    ],
+    [
+     0.56,
+     "lidL_R/shell",
+     "rodL_R"
+    ],
+    [
+     0.562,
+     "nose_block",
+     "lidL_R/shell"
+    ],
+    [
+     0.572,
+     "cornea_L",
+     "lidU_L/shell"
+    ]
+   ],
+   "collisions": []
+  },
+  "down30_pan+35_blink_vergence": {
+   "pose": {
+    "tilt": -30,
+    "pan_R": 35,
+    "pan_L": -35,
+    "up_R": -40,
+    "up_L": -40,
+    "lo_R": -35,
+    "lo_L": -35
+   },
+   "min_moving_mm": 0.5,
+   "closest_pairs": [
+    [
+     0.5,
+     "tilt_tongue",
+     "servo_tilt/body"
+    ],
+    [
+     0.503,
+     "nose_block",
+     "lidU_stud_R"
+    ],
+    [
+     0.545,
+     "lidL_L/shell",
+     "rodL_L"
+    ],
+    [
+     0.56,
+     "lidL_R/shell",
+     "rodL_R"
+    ],
+    [
+     0.562,
+     "nose_block",
+     "lidL_R/shell"
+    ],
+    [
+     0.572,
+     "cornea_L",
+     "lidU_L/shell"
+    ]
+   ],
+   "collisions": []
+  },
+  "up25_pan+35_wide": {
+   "pose": {
+    "tilt": 25,
+    "pan_R": 35,
+    "pan_L": 35,
+    "up_R": 55,
+    "up_L": 55,
+    "lo_R": -7.5,
+    "lo_L": -7.5
+   },
+   "min_moving_mm": 0.5,
+   "closest_pairs": [
+    [
+     0.5,
+     "tilt_tongue",
+     "servo_tilt/body"
+    ],
+    [
+     0.503,
+     "nose_block",
+     "lidU_stud_R"
+    ],
+    [
+     0.545,
+     "lidL_L/shell",
+     "rodL_L"
+    ],
+    [
+     0.56,
+     "lidL_R/shell",
+     "rodL_R"
+    ],
+    [
+     0.562,
+     "nose_block",
+     "lidL_R/shell"
+    ],
+    [
+     0.6,
+     "brow_L",
+     "face_shell"
+    ]
+   ],
+   "collisions": []
+  },
+  "up25_pan+35_wide_vergence": {
+   "pose": {
+    "tilt": 25,
+    "pan_R": 35,
+    "pan_L": -35,
+    "up_R": 55,
+    "up_L": 55,
+    "lo_R": -7.5,
+    "lo_L": -7.5
+   },
+   "min_moving_mm": 0.5,
+   "closest_pairs": [
+    [
+     0.5,
+     "tilt_tongue",
+     "servo_tilt/body"
+    ],
+    [
+     0.503,
+     "nose_block",
+     "lidU_stud_R"
+    ],
+    [
+     0.545,
+     "lidL_L/shell",
+     "rodL_L"
+    ],
+    [
+     0.56,
+     "lidL_R/shell",
+     "rodL_R"
+    ],
+    [
+     0.562,
+     "nose_block",
+     "lidL_R/shell"
+    ],
+    [
+     0.6,
+     "brow_L",
+     "face_shell"
+    ]
+   ],
+   "collisions": []
+  },
+  "up25_wide_open": {
+   "pose": {
+    "tilt": 25,
+    "pan_R": 0,
+    "pan_L": 0,
+    "up_R": 55,
+    "up_L": 55,
+    "lo_R": -6,
+    "lo_L": -6
+   },
+   "min_moving_mm": 0.5,
+   "closest_pairs": [
+    [
+     0.5,
+     "tilt_tongue",
+     "servo_tilt/body"
+    ],
+    [
+     0.503,
+     "nose_block",
+     "lidU_stud_R"
+    ],
+    [
+     0.545,
+     "lidL_L/shell",
+     "rodL_L"
+    ],
+    [
+     0.56,
+     "lidL_R/shell",
+     "rodL_R"
+    ],
+    [
+     0.562,
+     "nose_block",
+     "lidL_R/shell"
+    ],
+    [
+     0.6,
+     "brow_L",
+     "face_shell"
+    ]
+   ],
+   "collisions": []
+  },
+  "lids_closed_tucked": {
+   "pose": {
+    "tilt": 0,
+    "pan_R": 0,
+    "pan_L": 0,
+    "up_R": -12,
+    "up_L": -12,
+    "lo_R": -6,
+    "lo_L": -6
+   },
+   "min_moving_mm": 0.5,
+   "closest_pairs": [
+    [
+     0.5,
+     "tilt_tongue",
+     "servo_tilt/body"
+    ],
+    [
+     0.503,
+     "nose_block",
+     "lidU_stud_R"
+    ],
+    [
+     0.545,
+     "lidL_L/shell",
+     "rodL_L"
+    ],
+    [
+     0.56,
+     "lidL_R/shell",
+     "rodL_R"
+    ],
+    [
+     0.562,
+     "nose_block",
+     "lidL_R/shell"
+    ],
+    [
+     0.585,
+     "cornea_L",
+     "lidU_L/shell"
+    ]
+   ],
+   "collisions": []
+  },
+  "lids_fully_open": {
+   "pose": {
+    "tilt": 0,
+    "pan_R": 0,
+    "pan_L": 0,
+    "up_R": 55,
+    "up_L": 55,
+    "lo_R": -50,
+    "lo_L": -50
+   },
+   "min_moving_mm": 0.5,
+   "closest_pairs": [
+    [
+     0.5,
+     "tilt_tongue",
+     "servo_tilt/body"
+    ],
+    [
+     0.503,
+     "nose_block",
+     "lidU_stud_R"
+    ],
+    [
+     0.545,
+     "lidL_L/shell",
+     "rodL_L"
+    ],
+    [
+     0.56,
+     "lidL_R/shell",
+     "rodL_R"
+    ],
+    [
+     0.562,
+     "nose_block",
+     "lidL_R/shell"
+    ],
+    [
+     0.598,
+     "nose_block",
+     "lidL_stud_R"
+    ]
+   ],
+   "collisions": []
+  },
+  "down30_blink_lower_low": {
+   "pose": {
+    "tilt": -30,
+    "pan_R": 0,
+    "pan_L": 0,
+    "up_R": -12,
+    "up_L": -12,
+    "lo_R": -50,
+    "lo_L": -50
+   },
+   "min_moving_mm": 0.5,
+   "closest_pairs": [
+    [
+     0.5,
+     "tilt_tongue",
+     "servo_tilt/body"
+    ],
+    [
+     0.503,
+     "nose_block",
+     "lidU_stud_R"
+    ],
+    [
+     0.545,
+     "lidL_L/shell",
+     "rodL_L"
+    ],
+    [
+     0.56,
+     "lidL_R/shell",
+     "rodL_R"
+    ],
+    [
+     0.562,
+     "nose_block",
+     "lidL_R/shell"
+    ],
+    [
+     0.598,
+     "nose_block",
+     "lidL_stud_R"
+    ]
+   ],
+   "collisions": []
+  },
+  "up25_pan-35": {
+   "pose": {
+    "tilt": 25,
+    "pan_R": -35,
+    "pan_L": -35,
+    "up_R": 44,
+    "up_L": 44,
+    "lo_R": -7.5,
+    "lo_L": -7.5
+   },
+   "min_moving_mm": 0.5,
+   "closest_pairs": [
+    [
+     0.5,
+     "tilt_tongue",
+     "servo_tilt/body"
+    ],
+    [
+     0.503,
+     "nose_block",
+     "lidU_stud_R"
+    ],
+    [
+     0.545,
+     "lidL_L/shell",
+     "rodL_L"
+    ],
+    [
+     0.56,
+     "lidL_R/shell",
+     "rodL_R"
+    ],
+    [
+     0.562,
+     "nose_block",
+     "lidL_R/shell"
+    ],
+    [
+     0.6,
+     "brow_L",
+     "face_shell"
+    ]
+   ],
+   "collisions": []
+  },
+  "up25_pan-35_vergence": {
+   "pose": {
+    "tilt": 25,
+    "pan_R": -35,
+    "pan_L": 35,
+    "up_R": 44,
+    "up_L": 44,
+    "lo_R": -7.5,
+    "lo_L": -7.5
+   },
+   "min_moving_mm": 0.5,
+   "closest_pairs": [
+    [
+     0.5,
+     "tilt_tongue",
+     "servo_tilt/body"
+    ],
+    [
+     0.503,
+     "nose_block",
+     "lidU_stud_R"
+    ],
+    [
+     0.545,
+     "lidL_L/shell",
+     "rodL_L"
+    ],
+    [
+     0.56,
+     "lidL_R/shell",
+     "rodL_R"
+    ],
+    [
+     0.562,
+     "nose_block",
+     "lidL_R/shell"
+    ],
+    [
+     0.6,
+     "brow_L",
+     "face_shell"
+    ]
+   ],
+   "collisions": []
+  },
+  "down30_pan+35": {
+   "pose": {
+    "tilt": -30,
+    "pan_R": 35,
+    "pan_L": 35,
+    "up_R": -11,
+    "up_L": -11,
+    "lo_R": -35,
+    "lo_L": -35
+   },
+   "min_moving_mm": 0.5,
+   "closest_pairs": [
+    [
+     0.5,
+     "tilt_tongue",
+     "servo_tilt/body"
+    ],
+    [
+     0.503,
+     "nose_block",
+     "lidU_stud_R"
+    ],
+    [
+     0.545,
+     "lidL_L/shell",
+     "rodL_L"
+    ],
+    [
+     0.56,
+     "lidL_R/shell",
+     "rodL_R"
+    ],
+    [
+     0.562,
+     "nose_block",
+     "lidL_R/shell"
+    ],
+    [
+     0.6,
+     "brow_L",
+     "face_shell"
+    ]
+   ],
+   "collisions": []
+  },
+  "down30_pan+35_vergence": {
+   "pose": {
+    "tilt": -30,
+    "pan_R": 35,
+    "pan_L": -35,
+    "up_R": -11,
+    "up_L": -11,
+    "lo_R": -35,
+    "lo_L": -35
+   },
+   "min_moving_mm": 0.5,
+   "closest_pairs": [
+    [
+     0.5,
+     "tilt_tongue",
+     "servo_tilt/body"
+    ],
+    [
+     0.503,
+     "nose_block",
+     "lidU_stud_R"
+    ],
+    [
+     0.545,
+     "lidL_L/shell",
+     "rodL_L"
+    ],
+    [
+     0.56,
+     "lidL_R/shell",
+     "rodL_R"
+    ],
+    [
+     0.562,
+     "nose_block",
+     "lidL_R/shell"
+    ],
+    [
+     0.6,
+     "brow_L",
+     "face_shell"
+    ]
+   ],
+   "collisions": []
+  }
+ },
+ "mechanical_lid_range_outside_envelope": {
+  "note": "Lid angles swept over the full mechanical range at every tilt, ignoring the firmware envelope. Pairs listed here are why firmware keeps the lids inside the envelope.",
+  "issues": [
+   {
+    "a": "fork_L",
+    "b": "lidU_L/shell",
+    "min_mm": 0.0,
+    "overlap_mm3": 13.615,
+    "pose": {
+     "tilt": -30.0,
+     "up_L": 55.0
+    }
+   },
+   {
+    "a": "fork_R",
+    "b": "lidU_R/shell",
+    "min_mm": 0.0,
+    "overlap_mm3": 13.615,
+    "pose": {
+     "tilt": -30.0,
+     "up_R": 55.0
+    }
+   }
+  ],
+  "n_issues": 2
+ },
+ "negative_controls": {
+  "pan 55 deg (beyond +-35): fork arm vs sclera rim": {
+   "pose": {
+    "tilt": 0,
+    "pan_R": 55,
+    "pan_L": 55,
+    "up_R": 19.0,
+    "up_L": 19.0,
+    "lo_R": -20.0,
+    "lo_L": -20.0
+   },
+   "collisions_found": 2,
+   "examples": [
+    [
+     "fork_R",
+     "sclera_R/shell",
+     13.0196
+    ],
+    [
+     "fork_L",
+     "sclera_L/shell",
+     13.0196
+    ]
+   ],
+   "detected": true
+  },
+  "tilt +45 deg (beyond +25): cradle vs frame": {
+   "pose": {
+    "tilt": 45,
+    "pan_R": 0,
+    "pan_L": 0,
+    "up_R": 64,
+    "up_L": 64,
+    "lo_R": 2.5,
+    "lo_L": 2.5
+   },
+   "collisions_found": 14,
+   "examples": [
+    [
+     "spine",
+     "column",
+     36.5013
+    ],
+    [
+     "spine",
+     "B2_env/f",
+     1311.6646
+    ],
+    [
+     "temple_arm_R",
+     "face_shell",
+     139.799
+    ],
+    [
+     "servo_pan_R/body",
+     "face_shell",
+     543.9604
+    ],
+    [
+     "temple_arm_L",
+     "face_shell",
+     139.8001
+    ]
+   ],
+   "detected": true
+  },
+  "upper lid +85 deg (beyond +55): pushrod over the lid pin": {
+   "pose": {
+    "tilt": 0,
+    "pan_R": 0,
+    "pan_L": 0,
+    "up_R": 85,
+    "up_L": 85,
+    "lo_R": -20.0,
+    "lo_L": -20.0
+   },
+   "collisions_found": 9,
+   "examples": [
+    [
+     "fork_R",
+     "lidU_R/shell",
+     13.6149
+    ],
+    [
+     "fork_L",
+     "lidU_L/shell",
+     13.6149
+    ],
+    [
+     "tilt_tongue",
+     "rodU_L",
+     10.0412
+    ],
+    [
+     "nasal_pin_L",
+     "rodU_L",
+     1.4743
+    ],
+    [
+     "nose_block",
+     "rodU_R",
+     12.1187
+    ]
+   ],
+   "detected": true
+  }
+ },
+ "kinematics": {
+  "lids": {
+   "lidU_R": {
+    "servo_axis_xz": [
+     -8.0,
+     34.0
+    ],
+    "coupler_len_xz": 34.93,
+    "coupler_dir_deg": 103.24,
+    "lever_offset_deg": 185.74,
+    "lever_range_deg": [
+     145.7,
+     240.7
+    ],
+    "min_transmission_deg": 42.5,
+    "ball_y_offset": -0.8
+   },
+   "lidL_R": {
+    "servo_axis_xz": [
+     -8.0,
+     -34.0
+    ],
+    "coupler_len_xz": 34.93,
+    "coupler_dir_deg": -103.24,
+    "lever_offset_deg": 14.76,
+    "lever_range_deg": [
+     -35.2,
+     8.8
+    ],
+    "min_transmission_deg": 68.0,
+    "ball_y_offset": -0.8
+   },
+   "lidU_L": {
+    "servo_axis_xz": [
+     -8.0,
+     20.5
+    ],
+    "coupler_len_xz": 22.01,
+    "coupler_dir_deg": 111.32,
+    "lever_offset_deg": 193.82,
+    "lever_range_deg": [
+     153.8,
+     248.8
+    ],
+    "min_transmission_deg": 42.5,
+    "ball_y_offset": 0.8
+   },
+   "lidL_L": {
+    "servo_axis_xz": [
+     -8.0,
+     -20.5
+    ],
+    "coupler_len_xz": 22.01,
+    "coupler_dir_deg": -111.32,
+    "lever_offset_deg": 6.68,
+    "lever_range_deg": [
+     -43.3,
+     0.7
+    ],
+    "min_transmission_deg": 68.0,
+    "ball_y_offset": 0.8
+   }
+  },
+  "pan": {
+   "crank": 14.0,
+   "coupler": 26.0,
+   "transmission_deg_at_35": 55.0,
+   "crank_tip_sweep_x": [
+    -14.0,
+    -11.47
+   ],
+   "crank_tip_sweep_y": 8.03
+  },
+  "vergence_per_eye_deg": {
+   "150": 14.57,
+   "250": 8.87,
+   "400": 5.57,
+   "700": 3.19,
+   "1000": 2.23,
+   "2000": 1.12
+  }
+ },
+ "runtime_s": 154.6
+}

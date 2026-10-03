@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.venv/
+cad/out/.cache/
+cad/out/check_quick.json
+.DS_Store

@@ -1,0 +1,857 @@
+{
+ "generated_by": "cad/build.py",
+ "frame": "head frame H (params.py); parts exported in assembly position",
+ "printed_parts": [
+  {
+   "file_stem": "sclera",
+   "pnum": "P1",
+   "label": "Sclera shell",
+   "qty": 2,
+   "instances": [
+    "sclera_R",
+    "sclera_L"
+   ],
+   "material": "SLA white or PLA 0.1 mm",
+   "volume_cm3": 2.86,
+   "mass_g_each": 3.3,
+   "bbox_mm": [
+    29.2,
+    30.1,
+    30.1
+   ],
+   "brep_valid": false,
+   "solids": 1,
+   "stl_watertight": true,
+   "stl_volume_cm3": 2.85,
+   "stl_triangles": 7096,
+   "files": {
+    "step": "cad/out/parts/sclera.step",
+    "stl": "cad/out/parts/sclera.stl"
+   },
+   "size_kb": {
+    "step": 123,
+    "stl": 347
+   }
+  },
+  {
+   "file_stem": "cornea",
+   "pnum": "P2",
+   "label": "Cornea",
+   "qty": 2,
+   "instances": [
+    "cornea_R",
+    "cornea_L"
+   ],
+   "material": "SLA clear",
+   "volume_cm3": 0.19,
+   "mass_g_each": 0.2,
+   "bbox_mm": [
+    4.5,
+    14.7,
+    14.7
+   ],
+   "brep_valid": true,
+   "solids": 1,
+   "stl_watertight": true,
+   "stl_volume_cm3": 0.19,
+   "stl_triangles": 2500,
+   "files": {
+    "step": "cad/out/parts/cornea.step",
+    "stl": "cad/out/parts/cornea.stl"
+   },
+   "size_kb": {
+    "step": 12,
+    "stl": 122
+   }
+  },
+  {
+   "file_stem": "iris_disc",
+   "pnum": "P3",
+   "label": "Iris disc + pupil sleeve",
+   "qty": 2,
+   "instances": [
+    "iris_R",
+    "iris_L"
+   ],
+   "material": "SLA translucent",
+   "volume_cm3": 0.41,
+   "mass_g_each": 0.5,
+   "bbox_mm": [
+    4.1,
+    21.5,
+    21.5
+   ],
+   "brep_valid": true,
+   "solids": 1,
+   "stl_watertight": true,
+   "stl_volume_cm3": 0.41,
+   "stl_triangles": 2520,
+   "files": {
+    "step": "cad/out/parts/iris_disc.step",
+    "stl": "cad/out/parts/iris_disc.stl"
+   },
+   "size_kb": {
+    "step": 31,
+    "stl": 123
+   }
+  },
+  {
+   "file_stem": "carrier_L",
+   "pnum": "P4",
+   "label": "Dummy carrier (L)",
+   "qty": 1,
+   "instances": [
+    "carrier_L"
+   ],
+   "material": "PLA/PETG black",
+   "volume_cm3": 2.06,
+   "mass_g_each": 2.5,
+   "bbox_mm": [
+    7.1,
+    26.0,
+    26.0
+   ],
+   "brep_valid": true,
+   "solids": 1,
+   "stl_watertight": true,
+   "stl_volume_cm3": 2.05,
+   "stl_triangles": 2732,
+   "files": {
+    "step": "cad/out/parts/carrier_L.step",
+    "stl": "cad/out/parts/carrier_L.stl"
+   },
+   "size_kb": {
+    "step": 81,
+    "stl": 133
+   }
+  },
+  {
+   "file_stem": "carrier_R",
+   "pnum": "P4",
+   "label": "Camera carrier (R)",
+   "qty": 1,
+   "instances": [
+    "carrier_R"
+   ],
+   "material": "PLA/PETG black",
+   "volume_cm3": 1.72,
+   "mass_g_each": 2.1,
+   "bbox_mm": [
+    5.0,
+    26.0,
+    26.0
+   ],
+   "brep_valid": true,
+   "solids": 1,
+   "stl_watertight": true,
+   "stl_volume_cm3": 1.71,
+   "stl_triangles": 2102,
+   "files": {
+    "step": "cad/out/parts/carrier_R.step",
+    "stl": "cad/out/parts/carrier_R.stl"
+   },
+   "size_kb": {
+    "step": 102,
+    "stl": 103
+   }
+  },
+  {
+   "file_stem": "spine",
+   "pnum": "P5",
+   "label": "Cradle spine + rear plate",
+   "qty": 1,
+   "instances": [
+    "spine"
+   ],
+   "material": "PETG",
+   "volume_cm3": 18.79,
+   "mass_g_each": 23.9,
+   "bbox_mm": [
+    24.1,
+    146.0,
+    44.0
+   ],
+   "brep_valid": true,
+   "solids": 1,
+   "stl_watertight": true,
+   "stl_volume_cm3": 18.79,
+   "stl_triangles": 3084,
+   "files": {
+    "step": "cad/out/parts/spine.step",
+    "stl": "cad/out/parts/spine.stl"
+   },
+   "size_kb": {
+    "step": 232,
+    "stl": 151
+   }
+  },
+  {
+   "file_stem": "fork",
+   "pnum": "P6",
+   "label": "Fork",
+   "qty": 2,
+   "instances": [
+    "fork_R",
+    "fork_L"
+   ],
+   "material": "PETG or nylon",
+   "volume_cm3": 1.04,
+   "mass_g_each": 1.3,
+   "bbox_mm": [
+    43.0,
+    4.0,
+    24.0
+   ],
+   "brep_valid": true,
+   "solids": 1,
+   "stl_watertight": true,
+   "stl_volume_cm3": 1.04,
+   "stl_triangles": 1420,
+   "files": {
+    "step": "cad/out/parts/fork.step",
+    "stl": "cad/out/parts/fork.stl"
+   },
+   "size_kb": {
+    "step": 78,
+    "stl": 69
+   }
+  },
+  {
+   "file_stem": "temple_arm_L",
+   "pnum": "P7",
+   "label": "Temple arm L",
+   "qty": 1,
+   "instances": [
+    "temple_arm_L"
+   ],
+   "material": "PETG",
+   "volume_cm3": 4.11,
+   "mass_g_each": 5.2,
+   "bbox_mm": [
+    60.0,
+    14.6,
+    37.5
+   ],
+   "brep_valid": true,
+   "solids": 1,
+   "stl_watertight": true,
+   "stl_volume_cm3": 4.11,
+   "stl_triangles": 2452,
+   "files": {
+    "step": "cad/out/parts/temple_arm_L.step",
+    "stl": "cad/out/parts/temple_arm_L.stl"
+   },
+   "size_kb": {
+    "step": 102,
+    "stl": 120
+   }
+  },
+  {
+   "file_stem": "temple_arm_R",
+   "pnum": "P7",
+   "label": "Temple arm R",
+   "qty": 1,
+   "instances": [
+    "temple_arm_R"
+   ],
+   "material": "PETG",
+   "volume_cm3": 4.06,
+   "mass_g_each": 5.2,
+   "bbox_mm": [
+    60.0,
+    14.6,
+    37.5
+   ],
+   "brep_valid": true,
+   "solids": 1,
+   "stl_watertight": true,
+   "stl_volume_cm3": 4.06,
+   "stl_triangles": 2788,
+   "files": {
+    "step": "cad/out/parts/temple_arm_R.step",
+    "stl": "cad/out/parts/temple_arm_R.stl"
+   },
+   "size_kb": {
+    "step": 106,
+    "stl": 136
+   }
+  },
+  {
+   "file_stem": "tilt_tongue",
+   "pnum": "P8",
+   "label": "Tilt drive tongue",
+   "qty": 1,
+   "instances": [
+    "tilt_tongue"
+   ],
+   "material": "PETG",
+   "volume_cm3": 0.87,
+   "mass_g_each": 1.1,
+   "bbox_mm": [
+    48.0,
+    5.4,
+    9.0
+   ],
+   "brep_valid": true,
+   "solids": 1,
+   "stl_watertight": true,
+   "stl_volume_cm3": 0.87,
+   "stl_triangles": 2564,
+   "files": {
+    "step": "cad/out/parts/tilt_tongue.step",
+    "stl": "cad/out/parts/tilt_tongue.stl"
+   },
+   "size_kb": {
+    "step": 136,
+    "stl": 125
+   }
+  },
+  {
+   "file_stem": "nose_block",
+   "pnum": "P9",
+   "label": "Nose-bridge block",
+   "qty": 1,
+   "instances": [
+    "nose_block"
+   ],
+   "material": "PETG",
+   "volume_cm3": 1.57,
+   "mass_g_each": 2.0,
+   "bbox_mm": [
+    24.6,
+    15.4,
+    17.2
+   ],
+   "brep_valid": true,
+   "solids": 1,
+   "stl_watertight": true,
+   "stl_volume_cm3": 1.57,
+   "stl_triangles": 2048,
+   "files": {
+    "step": "cad/out/parts/nose_block.step",
+    "stl": "cad/out/parts/nose_block.stl"
+   },
+   "size_kb": {
+    "step": 51,
+    "stl": 100
+   }
+  },
+  {
+   "file_stem": "column",
+   "pnum": "P10",
+   "label": "Centre column",
+   "qty": 1,
+   "instances": [
+    "column"
+   ],
+   "material": "PETG",
+   "volume_cm3": 12.49,
+   "mass_g_each": 15.9,
+   "bbox_mm": [
+    39.5,
+    5.7,
+    131.0
+   ],
+   "brep_valid": true,
+   "solids": 1,
+   "stl_watertight": true,
+   "stl_volume_cm3": 12.49,
+   "stl_triangles": 2236,
+   "files": {
+    "step": "cad/out/parts/column.step",
+    "stl": "cad/out/parts/column.stl"
+   },
+   "size_kb": {
+    "step": 182,
+    "stl": 109
+   }
+  },
+  {
+   "file_stem": "lidL_L",
+   "pnum": "P11",
+   "label": "Lower lid L",
+   "qty": 1,
+   "instances": [
+    "lidL_L"
+   ],
+   "material": "SLA or PLA, skin paint",
+   "volume_cm3": 0.67,
+   "mass_g_each": 0.8,
+   "bbox_mm": [
+    22.0,
+    41.5,
+    18.6
+   ],
+   "brep_valid": true,
+   "solids": 1,
+   "stl_watertight": true,
+   "stl_volume_cm3": 0.67,
+   "stl_triangles": 3252,
+   "files": {
+    "step": "cad/out/parts/lidL_L.step",
+    "stl": "cad/out/parts/lidL_L.stl"
+   },
+   "size_kb": {
+    "step": 317,
+    "stl": 159
+   }
+  },
+  {
+   "file_stem": "lidL_R",
+   "pnum": "P11",
+   "label": "Lower lid R",
+   "qty": 1,
+   "instances": [
+    "lidL_R"
+   ],
+   "material": "SLA or PLA, skin paint",
+   "volume_cm3": 0.68,
+   "mass_g_each": 0.8,
+   "bbox_mm": [
+    22.0,
+    41.5,
+    18.6
+   ],
+   "brep_valid": true,
+   "solids": 1,
+   "stl_watertight": true,
+   "stl_volume_cm3": 0.68,
+   "stl_triangles": 3362,
+   "files": {
+    "step": "cad/out/parts/lidL_R.step",
+    "stl": "cad/out/parts/lidL_R.stl"
+   },
+   "size_kb": {
+    "step": 265,
+    "stl": 164
+   }
+  },
+  {
+   "file_stem": "lidU_L",
+   "pnum": "P11",
+   "label": "Upper lid L",
+   "qty": 1,
+   "instances": [
+    "lidU_L"
+   ],
+   "material": "SLA or PLA, skin paint",
+   "volume_cm3": 1.16,
+   "mass_g_each": 1.3,
+   "bbox_mm": [
+    29.7,
+    37.5,
+    27.2
+   ],
+   "brep_valid": true,
+   "solids": 1,
+   "stl_watertight": true,
+   "stl_volume_cm3": 1.16,
+   "stl_triangles": 4482,
+   "files": {
+    "step": "cad/out/parts/lidU_L.step",
+    "stl": "cad/out/parts/lidU_L.stl"
+   },
+   "size_kb": {
+    "step": 311,
+    "stl": 219
+   }
+  },
+  {
+   "file_stem": "lidU_R",
+   "pnum": "P11",
+   "label": "Upper lid R",
+   "qty": 1,
+   "instances": [
+    "lidU_R"
+   ],
+   "material": "SLA or PLA, skin paint",
+   "volume_cm3": 1.16,
+   "mass_g_each": 1.3,
+   "bbox_mm": [
+    30.4,
+    37.5,
+    25.8
+   ],
+   "brep_valid": true,
+   "solids": 1,
+   "stl_watertight": true,
+   "stl_volume_cm3": 1.16,
+   "stl_triangles": 4462,
+   "files": {
+    "step": "cad/out/parts/lidU_R.step",
+    "stl": "cad/out/parts/lidU_R.stl"
+   },
+   "size_kb": {
+    "step": 308,
+    "stl": 218
+   }
+  },
+  {
+   "file_stem": "pan_crank",
+   "pnum": "P12",
+   "label": "Pan crank",
+   "qty": 2,
+   "instances": [
+    "pan_crank_R",
+    "pan_crank_L"
+   ],
+   "material": "PETG",
+   "volume_cm3": 0.42,
+   "mass_g_each": 0.5,
+   "bbox_mm": [
+    20.0,
+    7.0,
+    8.6
+   ],
+   "brep_valid": true,
+   "solids": 1,
+   "stl_watertight": true,
+   "stl_volume_cm3": 0.42,
+   "stl_triangles": 1864,
+   "files": {
+    "step": "cad/out/parts/pan_crank.step",
+    "stl": "cad/out/parts/pan_crank.stl"
+   },
+   "size_kb": {
+    "step": 34,
+    "stl": 91
+   }
+  },
+  {
+   "file_stem": "brow_hub",
+   "pnum": "P13a",
+   "label": "Brow hub",
+   "qty": 2,
+   "instances": [
+    "brow_hub_R",
+    "brow_hub_L"
+   ],
+   "material": "PETG",
+   "volume_cm3": 0.85,
+   "mass_g_each": 1.1,
+   "bbox_mm": [
+    36.1,
+    6.0,
+    6.0
+   ],
+   "brep_valid": true,
+   "solids": 1,
+   "stl_watertight": true,
+   "stl_volume_cm3": 0.85,
+   "stl_triangles": 1016,
+   "files": {
+    "step": "cad/out/parts/brow_hub.step",
+    "stl": "cad/out/parts/brow_hub.stl"
+   },
+   "size_kb": {
+    "step": 20,
+    "stl": 50
+   }
+  },
+  {
+   "file_stem": "brow_L",
+   "pnum": "P13b",
+   "label": "Brow L",
+   "qty": 1,
+   "instances": [
+    "brow_L"
+   ],
+   "material": "PLA + flock",
+   "volume_cm3": 0.72,
+   "mass_g_each": 0.9,
+   "bbox_mm": [
+    4.0,
+    45.0,
+    9.0
+   ],
+   "brep_valid": true,
+   "solids": 1,
+   "stl_watertight": true,
+   "stl_volume_cm3": 0.72,
+   "stl_triangles": 1260,
+   "files": {
+    "step": "cad/out/parts/brow_L.step",
+    "stl": "cad/out/parts/brow_L.stl"
+   },
+   "size_kb": {
+    "step": 210,
+    "stl": 62
+   }
+  },
+  {
+   "file_stem": "brow_R",
+   "pnum": "P13b",
+   "label": "Brow R",
+   "qty": 1,
+   "instances": [
+    "brow_R"
+   ],
+   "material": "PLA + flock",
+   "volume_cm3": 0.72,
+   "mass_g_each": 0.9,
+   "bbox_mm": [
+    4.0,
+    45.0,
+    9.0
+   ],
+   "brep_valid": true,
+   "solids": 1,
+   "stl_watertight": true,
+   "stl_volume_cm3": 0.72,
+   "stl_triangles": 1260,
+   "files": {
+    "step": "cad/out/parts/brow_R.step",
+    "stl": "cad/out/parts/brow_R.stl"
+   },
+   "size_kb": {
+    "step": 212,
+    "stl": 62
+   }
+  },
+  {
+   "file_stem": "face_shell",
+   "pnum": "P14",
+   "label": "Face shell (stylised, v1)",
+   "qty": 1,
+   "instances": [
+    "face_shell"
+   ],
+   "material": "PLA/PETG, painted",
+   "volume_cm3": 99.93,
+   "mass_g_each": 123.9,
+   "bbox_mm": [
+    51.1,
+    176.2,
+    145.1
+   ],
+   "brep_valid": true,
+   "solids": 1,
+   "stl_watertight": true,
+   "stl_volume_cm3": 99.41,
+   "stl_triangles": 6946,
+   "files": {
+    "step": "cad/out/parts/face_shell.step",
+    "stl": "cad/out/parts/face_shell.stl"
+   },
+   "size_kb": {
+    "step": 1408,
+    "stl": 339
+   }
+  },
+  {
+   "file_stem": "side_plate_L",
+   "pnum": "P15a",
+   "label": "Skull side plate L",
+   "qty": 1,
+   "instances": [
+    "side_plate_L"
+   ],
+   "material": "PETG",
+   "volume_cm3": 31.29,
+   "mass_g_each": 39.7,
+   "bbox_mm": [
+    98.0,
+    7.5,
+    131.0
+   ],
+   "brep_valid": true,
+   "solids": 1,
+   "stl_watertight": true,
+   "stl_volume_cm3": 31.29,
+   "stl_triangles": 2208,
+   "files": {
+    "step": "cad/out/parts/side_plate_L.step",
+    "stl": "cad/out/parts/side_plate_L.stl"
+   },
+   "size_kb": {
+    "step": 344,
+    "stl": 108
+   }
+  },
+  {
+   "file_stem": "side_plate_R",
+   "pnum": "P15a",
+   "label": "Skull side plate R",
+   "qty": 1,
+   "instances": [
+    "side_plate_R"
+   ],
+   "material": "PETG",
+   "volume_cm3": 31.29,
+   "mass_g_each": 39.7,
+   "bbox_mm": [
+    98.0,
+    7.5,
+    131.0
+   ],
+   "brep_valid": true,
+   "solids": 1,
+   "stl_watertight": true,
+   "stl_volume_cm3": 31.29,
+   "stl_triangles": 2208,
+   "files": {
+    "step": "cad/out/parts/side_plate_R.step",
+    "stl": "cad/out/parts/side_plate_R.stl"
+   },
+   "size_kb": {
+    "step": 345,
+    "stl": 108
+   }
+  },
+  {
+   "file_stem": "top_bridge",
+   "pnum": "P15b",
+   "label": "Skull top bridge + brow brackets",
+   "qty": 1,
+   "instances": [
+    "top_bridge"
+   ],
+   "material": "PETG",
+   "volume_cm3": 37.22,
+   "mass_g_each": 47.3,
+   "bbox_mm": [
+    70.0,
+    168.0,
+    42.5
+   ],
+   "brep_valid": true,
+   "solids": 1,
+   "stl_watertight": true,
+   "stl_volume_cm3": 37.22,
+   "stl_triangles": 2084,
+   "files": {
+    "step": "cad/out/parts/top_bridge.step",
+    "stl": "cad/out/parts/top_bridge.stl"
+   },
+   "size_kb": {
+    "step": 227,
+    "stl": 102
+   }
+  },
+  {
+   "file_stem": "base_plate",
+   "pnum": "P16a",
+   "label": "Base plate",
+   "qty": 1,
+   "instances": [
+    "base_plate"
+   ],
+   "material": "PETG",
+   "volume_cm3": 76.8,
+   "mass_g_each": 97.5,
+   "bbox_mm": [
+    142.5,
+    176.0,
+    36.2
+   ],
+   "brep_valid": true,
+   "solids": 1,
+   "stl_watertight": true,
+   "stl_volume_cm3": 76.8,
+   "stl_triangles": 5728,
+   "files": {
+    "step": "cad/out/parts/base_plate.step",
+    "stl": "cad/out/parts/base_plate.stl"
+   },
+   "size_kb": {
+    "step": 279,
+    "stl": 280
+   }
+  },
+  {
+   "file_stem": "back_cover",
+   "pnum": "P16b",
+   "label": "Back cover",
+   "qty": 1,
+   "instances": [
+    "back_cover"
+   ],
+   "material": "PETG",
+   "volume_cm3": 165.03,
+   "mass_g_each": 209.6,
+   "bbox_mm": [
+    101.6,
+    176.2,
+    145.2
+   ],
+   "brep_valid": true,
+   "solids": 1,
+   "stl_watertight": true,
+   "stl_volume_cm3": 164.87,
+   "stl_triangles": 2836,
+   "files": {
+    "step": "cad/out/parts/back_cover.step",
+    "stl": "cad/out/parts/back_cover.stl"
+   },
+   "size_kb": {
+    "step": 260,
+    "stl": 139
+   }
+  },
+  {
+   "file_stem": "lid_horn",
+   "pnum": "P17",
+   "label": "Lid servo horn",
+   "qty": 4,
+   "instances": [
+    "hornU_R",
+    "hornL_R",
+    "hornU_L",
+    "hornL_L"
+   ],
+   "material": "PETG",
+   "volume_cm3": 0.19,
+   "mass_g_each": 0.2,
+   "bbox_mm": [
+    14.2,
+    5.0,
+    9.8
+   ],
+   "brep_valid": true,
+   "solids": 1,
+   "stl_watertight": true,
+   "stl_volume_cm3": 0.19,
+   "stl_triangles": 1864,
+   "files": {
+    "step": "cad/out/parts/lid_horn.step",
+    "stl": "cad/out/parts/lid_horn.stl"
+   },
+   "size_kb": {
+    "step": 35,
+    "stl": 91
+   }
+  }
+ ],
+ "printed_total_mass_g": 636.0,
+ "all_stl_watertight": true,
+ "purchased_in_model": {
+  "SCS0009 envelope (tilt, ID 3)": 1,
+  "SCS0009 envelope (lidU_R, ID 4)": 1,
+  "SCS0009 envelope (lidU_L, ID 5)": 1,
+  "SCS0009 envelope (lidL_R, ID 6)": 1,
+  "SCS0009 envelope (lidL_L, ID 7)": 1,
+  "SCS0009 envelope (brow_R, ID 8)": 1,
+  "SCS0009 envelope (brow_L, ID 9)": 1,
+  "Dowel Dia 3 x 12 (right temple)": 1,
+  "Dowel Dia 3 x 12 (left loose bushing)": 1,
+  "Dowel Dia 3 x 8 (right nasal lid pin)": 1,
+  "Speaker 28 mm envelope": 1,
+  "B2 envelope (spec 4)": 1,
+  "B4 envelope (spec 4)": 1,
+  "SCS0009 envelope (pan_R, ID 1)": 1,
+  "Dowel Dia 2 x 8 x2 (pole pins)": 2,
+  "Dowel Dia 3 x 16 (temporal lid pin)": 2,
+  "SCS0009 envelope (pan_L, ID 2)": 1,
+  "Dowel Dia 3 x 6 (tongue drive pin)": 1,
+  "Dowel Dia 3 x 7 (left nasal lid pin)": 1,
+  "MR63ZZ": 1,
+  "B1 envelope (spec 4.1)": 1,
+  "B3 envelope (spec 4.4)": 2,
+  "M2 ball stud": 12,
+  "OV2640 module envelope": 1,
+  "M2 ball links + rod (26 mm)": 2,
+  "M2 ball links + rod": 4
+ },
+ "assembly_step": "cad/out/iris_assembly.step",
+ "assembly_step_kb": 9636
+}

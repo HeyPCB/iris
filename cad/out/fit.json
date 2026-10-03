@@ -1,0 +1,1167 @@
+{
+ "generated_by": "cad/fit.py",
+ "mode": "spec section 4 envelopes",
+ "boards": {
+  "B1": {
+   "source": "envelope (spec section 4)",
+   "clearances": [
+    {
+     "board_item": "B1_env/board",
+     "other": "spine",
+     "type": "contact",
+     "required_mm": 0.0,
+     "reason": "B1 B face on the bosses",
+     "min_mm": 0.0,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B1_env/b",
+     "other": "spine",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": 0.4,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B1_env/f",
+     "other": "spine",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": 1.0,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B1_env/f",
+     "other": "tilt_tongue",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": 4.0,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B1_env/f",
+     "other": "fork_R",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": 5.5,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B1_env/f",
+     "other": "fork_L",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": 5.5,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B1_env/board",
+     "other": "top_bridge",
+     "type": "moving",
+     "required_mm": 0.5,
+     "reason": "",
+     "min_mm": null,
+     "pose": {
+      "tilt": -30.0
+     },
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B1_env/board",
+     "other": "back_cover",
+     "type": "moving",
+     "required_mm": 0.5,
+     "reason": "",
+     "min_mm": null,
+     "pose": {
+      "tilt": -30.0
+     },
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B1_env/board",
+     "other": "base_plate",
+     "type": "moving",
+     "required_mm": 0.5,
+     "reason": "",
+     "min_mm": null,
+     "pose": {
+      "tilt": 12.5
+     },
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B1_env/f",
+     "other": "sclera_L/shell",
+     "type": "moving",
+     "required_mm": 0.5,
+     "reason": "",
+     "min_mm": null,
+     "pose": {
+      "tilt": -30.0,
+      "pan_L": -35.0
+     },
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B1_env/f",
+     "other": "sclera_R/shell",
+     "type": "moving",
+     "required_mm": 0.5,
+     "reason": "",
+     "min_mm": null,
+     "pose": {
+      "tilt": -30.0,
+      "pan_R": -35.0
+     },
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B1_env/f",
+     "other": "top_bridge",
+     "type": "moving",
+     "required_mm": 0.5,
+     "reason": "",
+     "min_mm": null,
+     "pose": {
+      "tilt": -30.0
+     },
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B1_env/f",
+     "other": "back_cover",
+     "type": "moving",
+     "required_mm": 0.5,
+     "reason": "",
+     "min_mm": null,
+     "pose": {
+      "tilt": -30.0
+     },
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B1_env/f",
+     "other": "base_plate",
+     "type": "moving",
+     "required_mm": 0.5,
+     "reason": "",
+     "min_mm": null,
+     "pose": {
+      "tilt": 12.5
+     },
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B1_env/b",
+     "other": "top_bridge",
+     "type": "moving",
+     "required_mm": 0.5,
+     "reason": "",
+     "min_mm": null,
+     "pose": {
+      "tilt": -30.0
+     },
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B1_env/b",
+     "other": "back_cover",
+     "type": "moving",
+     "required_mm": 0.5,
+     "reason": "",
+     "min_mm": null,
+     "pose": {
+      "tilt": -30.0
+     },
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B1_env/b",
+     "other": "base_plate",
+     "type": "moving",
+     "required_mm": 0.5,
+     "reason": "",
+     "min_mm": null,
+     "pose": {
+      "tilt": 12.5
+     },
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B1_env/board",
+     "other": "fork_R",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": null,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B1_env/board",
+     "other": "temple_arm_R",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": null,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B1_env/board",
+     "other": "servo_pan_R/body",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": null,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    }
+   ],
+   "collisions": [],
+   "below_threshold": [],
+   "holes": [
+    {
+     "expected_H": [
+      -52.0,
+      -36.0,
+      16.0
+     ],
+     "found_H": [
+      -52.8,
+      -36.0,
+      16.0
+     ],
+     "found_dia": 2.2,
+     "hole_offset_mm": 0.0,
+     "boss_axis_offset_mm": 0.0
+    },
+    {
+     "expected_H": [
+      -52.0,
+      36.0,
+      16.0
+     ],
+     "found_H": [
+      -52.8,
+      36.0,
+      16.0
+     ],
+     "found_dia": 2.2,
+     "hole_offset_mm": 0.0,
+     "boss_axis_offset_mm": 0.0
+    },
+    {
+     "expected_H": [
+      -52.0,
+      -36.0,
+      -16.0
+     ],
+     "found_H": [
+      -52.8,
+      -36.0,
+      -16.0
+     ],
+     "found_dia": 2.2,
+     "hole_offset_mm": 0.0,
+     "boss_axis_offset_mm": 0.0
+    },
+    {
+     "expected_H": [
+      -52.0,
+      36.0,
+      -16.0
+     ],
+     "found_H": [
+      -52.8,
+      36.0,
+      -16.0
+     ],
+     "found_dia": 2.2,
+     "hole_offset_mm": 0.0,
+     "boss_axis_offset_mm": 0.0
+    }
+   ],
+   "holes_found_on_board": 4,
+   "mount_face_gap_mm": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "antenna_keepout_5mm": {
+    "intrusions": [],
+    "pass": true
+   }
+  },
+  "B2": {
+   "source": "envelope (spec section 4)",
+   "clearances": [
+    {
+     "board_item": "B2_env/board",
+     "other": "base_plate",
+     "type": "contact",
+     "required_mm": 0.0,
+     "reason": "B2 B face on the bosses",
+     "min_mm": 0.0,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B2_env/b",
+     "other": "base_plate",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": 0.5,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B2_env/board",
+     "other": "back_cover",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": 1.0,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B2_env/f",
+     "other": "back_cover",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": 1.0,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B2_env/b",
+     "other": "back_cover",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": 1.0,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B2_env/f",
+     "other": "base_plate",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": 1.676,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B2_env/f",
+     "other": "spine",
+     "type": "moving",
+     "required_mm": 0.5,
+     "reason": "",
+     "min_mm": 2.451,
+     "pose": {
+      "tilt": 25.0
+     },
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B2_env/board",
+     "other": "column",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": null,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B2_env/board",
+     "other": "nose_block",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": null,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B2_env/board",
+     "other": "side_plate_R",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": null,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B2_env/board",
+     "other": "side_plate_L",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": null,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B2_env/board",
+     "other": "top_bridge",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": null,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B2_env/board",
+     "other": "face_shell",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": null,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B2_env/board",
+     "other": "servo_tilt/body",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": null,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B2_env/board",
+     "other": "servo_tilt/spline",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": null,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B2_env/board",
+     "other": "servo_lidU_R/body",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": null,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B2_env/board",
+     "other": "servo_lidU_R/spline",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": null,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B2_env/board",
+     "other": "servo_lidU_L/body",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": null,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B2_env/board",
+     "other": "servo_lidU_L/spline",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": null,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B2_env/board",
+     "other": "servo_lidL_R/body",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": null,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    }
+   ],
+   "collisions": [],
+   "below_threshold": [],
+   "holes": [
+    {
+     "expected_H": [
+      -34.0,
+      28.0,
+      -60.0
+     ],
+     "found_H": [
+      -34.0,
+      28.0,
+      -60.8
+     ],
+     "found_dia": 2.2,
+     "hole_offset_mm": 0.0,
+     "boss_axis_offset_mm": 0.0
+    },
+    {
+     "expected_H": [
+      -34.0,
+      -28.0,
+      -60.0
+     ],
+     "found_H": [
+      -34.0,
+      -28.0,
+      -60.8
+     ],
+     "found_dia": 2.2,
+     "hole_offset_mm": 0.0,
+     "boss_axis_offset_mm": 0.0
+    },
+    {
+     "expected_H": [
+      -106.0,
+      28.0,
+      -60.0
+     ],
+     "found_H": [
+      -106.0,
+      28.0,
+      -60.8
+     ],
+     "found_dia": 2.2,
+     "hole_offset_mm": 0.0,
+     "boss_axis_offset_mm": 0.0
+    },
+    {
+     "expected_H": [
+      -106.0,
+      -28.0,
+      -60.0
+     ],
+     "found_H": [
+      -106.0,
+      -28.0,
+      -60.8
+     ],
+     "found_dia": 2.2,
+     "hole_offset_mm": 0.0,
+     "boss_axis_offset_mm": 0.0
+    }
+   ],
+   "holes_found_on_board": 4,
+   "mount_face_gap_mm": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "B4": {
+   "source": "envelope (spec section 4)",
+   "clearances": [
+    {
+     "board_item": "B4_env/board",
+     "other": "face_shell",
+     "type": "contact",
+     "required_mm": 0.0,
+     "reason": "B4 F face on the shell bosses",
+     "min_mm": 0.0,
+     "pose": {},
+     "overlap_mm3": -0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B4_env/f",
+     "other": "face_shell",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": 0.5,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B4_env/b",
+     "other": "face_shell",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": 1.676,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B4_env/b",
+     "other": "column",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": 1.844,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B4_env/board",
+     "other": "brow_hub_L",
+     "type": "moving",
+     "required_mm": 0.5,
+     "reason": "",
+     "min_mm": 3.0,
+     "pose": {
+      "brow_L": 0.0
+     },
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B4_env/board",
+     "other": "brow_hub_R",
+     "type": "moving",
+     "required_mm": 0.5,
+     "reason": "",
+     "min_mm": 3.0,
+     "pose": {
+      "brow_R": 0.0
+     },
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B4_env/f",
+     "other": "brow_hub_L",
+     "type": "moving",
+     "required_mm": 0.5,
+     "reason": "",
+     "min_mm": 3.0,
+     "pose": {
+      "brow_L": 0.0
+     },
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B4_env/f",
+     "other": "brow_hub_R",
+     "type": "moving",
+     "required_mm": 0.5,
+     "reason": "",
+     "min_mm": 3.0,
+     "pose": {
+      "brow_R": 0.0
+     },
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B4_env/b",
+     "other": "brow_hub_L",
+     "type": "moving",
+     "required_mm": 0.5,
+     "reason": "",
+     "min_mm": 3.0,
+     "pose": {
+      "brow_L": 0.0
+     },
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B4_env/b",
+     "other": "brow_hub_R",
+     "type": "moving",
+     "required_mm": 0.5,
+     "reason": "",
+     "min_mm": 3.0,
+     "pose": {
+      "brow_R": 0.0
+     },
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B4_env/b",
+     "other": "servo_lidU_R/body",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": 4.904,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B4_env/f",
+     "other": "brow_L",
+     "type": "moving",
+     "required_mm": 0.5,
+     "reason": "",
+     "min_mm": null,
+     "pose": {
+      "brow_L": -20.0
+     },
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B4_env/f",
+     "other": "brow_R",
+     "type": "moving",
+     "required_mm": 0.5,
+     "reason": "",
+     "min_mm": null,
+     "pose": {
+      "brow_R": -20.0
+     },
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B4_env/board",
+     "other": "B2_env/board",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": null,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B4_env/f",
+     "other": "B2_env/board",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": null,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B4_env/b",
+     "other": "B2_env/board",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": null,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B4_env/board",
+     "other": "B2_env/f",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": null,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B4_env/f",
+     "other": "B2_env/f",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": null,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B4_env/b",
+     "other": "B2_env/f",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": null,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B4_env/board",
+     "other": "B2_env/b",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": null,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    }
+   ],
+   "collisions": [],
+   "below_threshold": [],
+   "holes": [
+    {
+     "expected_H": [
+      22.0,
+      -46.0,
+      50.0
+     ],
+     "found_H": [
+      21.2,
+      -46.0,
+      50.0
+     ],
+     "found_dia": 2.2,
+     "hole_offset_mm": 0.0,
+     "boss_axis_offset_mm": 0.0
+    },
+    {
+     "expected_H": [
+      22.0,
+      -24.0,
+      50.0
+     ],
+     "found_H": [
+      21.2,
+      -24.0,
+      50.0
+     ],
+     "found_dia": 2.2,
+     "hole_offset_mm": 0.0,
+     "boss_axis_offset_mm": 0.0
+    },
+    {
+     "expected_H": [
+      22.0,
+      24.0,
+      50.0
+     ],
+     "found_H": [
+      21.2,
+      24.0,
+      50.0
+     ],
+     "found_dia": 2.2,
+     "hole_offset_mm": 0.0,
+     "boss_axis_offset_mm": 0.0
+    },
+    {
+     "expected_H": [
+      22.0,
+      46.0,
+      50.0
+     ],
+     "found_H": [
+      21.2,
+      46.0,
+      50.0
+     ],
+     "found_dia": 2.2,
+     "hole_offset_mm": 0.0,
+     "boss_axis_offset_mm": 0.0
+    }
+   ],
+   "holes_found_on_board": 4,
+   "mount_face_gap_mm": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "B3": {
+   "source": "envelope (spec section 4)",
+   "clearances": [
+    {
+     "board_item": "B3_env_R/board",
+     "other": "iris_R",
+     "type": "contact",
+     "required_mm": 0.0,
+     "reason": "cone ring clamps B3",
+     "min_mm": 0.0,
+     "pose": {},
+     "overlap_mm3": -0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B3_env_R/board",
+     "other": "carrier_R",
+     "type": "contact",
+     "required_mm": 0.0,
+     "reason": "B3 seated in the carrier",
+     "min_mm": 0.0,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B3_env_R/board",
+     "other": "camera",
+     "type": "contact",
+     "required_mm": 0.0,
+     "reason": "B3 rests on the camera holder",
+     "min_mm": 0.0,
+     "pose": {},
+     "overlap_mm3": 0.2693,
+     "pass": true
+    },
+    {
+     "board_item": "B3_env_R/b",
+     "other": "carrier_R",
+     "type": "contact",
+     "required_mm": 0.0,
+     "reason": "B3 seated in the carrier",
+     "min_mm": 0.0,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B3_env_L/board",
+     "other": "iris_L",
+     "type": "contact",
+     "required_mm": 0.0,
+     "reason": "cone ring clamps B3",
+     "min_mm": 0.0,
+     "pose": {},
+     "overlap_mm3": -0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B3_env_L/board",
+     "other": "carrier_L",
+     "type": "contact",
+     "required_mm": 0.0,
+     "reason": "B3 seated in the carrier",
+     "min_mm": 0.0,
+     "pose": {},
+     "overlap_mm3": 0.2693,
+     "pass": true
+    },
+    {
+     "board_item": "B3_env_L/b",
+     "other": "carrier_L",
+     "type": "contact",
+     "required_mm": 0.0,
+     "reason": "B3 seated in the carrier",
+     "min_mm": 0.0,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B3_env_R/b",
+     "other": "camera",
+     "type": "contact",
+     "required_mm": 0.0,
+     "reason": "B3 rests on the camera holder",
+     "min_mm": 0.1,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B3_env_R/f",
+     "other": "iris_R",
+     "type": "contact",
+     "required_mm": 0.0,
+     "reason": "cone ring clamps B3",
+     "min_mm": 0.3,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B3_env_L/f",
+     "other": "iris_L",
+     "type": "contact",
+     "required_mm": 0.0,
+     "reason": "cone ring clamps B3",
+     "min_mm": 0.3,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B3_env_R/f",
+     "other": "camera",
+     "type": "contact",
+     "required_mm": 0.0,
+     "reason": "B3 rests on the camera holder",
+     "min_mm": 0.79,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B3_env_L/f",
+     "other": "carrier_L",
+     "type": "contact",
+     "required_mm": 0.0,
+     "reason": "B3 seated in the carrier",
+     "min_mm": 0.79,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B3_env_R/f",
+     "other": "carrier_R",
+     "type": "contact",
+     "required_mm": 0.0,
+     "reason": "B3 seated in the carrier",
+     "min_mm": 0.8,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B3_env_R/b",
+     "other": "iris_R",
+     "type": "contact",
+     "required_mm": 0.0,
+     "reason": "cone ring clamps B3",
+     "min_mm": 0.8,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B3_env_L/b",
+     "other": "iris_L",
+     "type": "contact",
+     "required_mm": 0.0,
+     "reason": "cone ring clamps B3",
+     "min_mm": 0.8,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B3_env_R/board",
+     "other": "sclera_R/shell",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": 1.463,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B3_env_L/board",
+     "other": "sclera_L/shell",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": 1.463,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B3_env_R/f",
+     "other": "sclera_R/shell",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": 1.752,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B3_env_L/f",
+     "other": "sclera_L/shell",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": 1.752,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    },
+    {
+     "board_item": "B3_env_R/b",
+     "other": "sclera_R/shell",
+     "type": "static",
+     "required_mm": 0.3,
+     "reason": "",
+     "min_mm": 2.205,
+     "pose": {},
+     "overlap_mm3": 0.0,
+     "pass": true
+    }
+   ],
+   "collisions": [],
+   "below_threshold": []
+  }
+ }
+}
