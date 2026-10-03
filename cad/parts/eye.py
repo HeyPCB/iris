@@ -5,7 +5,7 @@ import math
 import cadquery as cq
 
 from .. import params as P
-from ..geom import box, cone, cyl, shell_sphere, tube
+from ..geom import box, cone, cyl, prism, shell_sphere, tube
 from . import purchased
 
 
@@ -95,7 +95,7 @@ def carrier(side):
     key = box(x1 - 0.01, xr, -10, 10, k * P.CARRIER_RING_FLAT, k * 12).intersect(cyl("x", (0, 0, 0), P.CARRIER_RING_ID / 2 + 0.1, x1 - 0.02, xr))
     c = c.fuse(key)
     # B-side component pocket outside the 8.7 mm keepout square
-    pocket = cyl("x", (0, 0, 0), P.B3_D / 2 + 0.1, x1 - P.B3_B_H - 0.1, x1 + 0.01).cut(
+    pocket = cyl("x", (0, 0, 0), P.B3_D / 2 + 0.1, x1 - P.B3_B_H - 0.35, x1 + 0.01).cut(
         box(x1 - 2, x1 + 1, -P.B3_KEEPOUT_SQ / 2, P.B3_KEEPOUT_SQ / 2, -P.B3_KEEPOUT_SQ / 2, P.B3_KEEPOUT_SQ / 2))
     c = c.cut(pocket)
     t = -P.nasal(side)                                               # temporal sign (y)
@@ -107,7 +107,13 @@ def carrier(side):
     else:
         # dummy module (same envelope as the camera) printed in black
         c = c.fuse(purchased.ov2640_eye(side, neck=False))
-    c = c.cut(cyl("x", (0, t * 7.35, 0), P.RING_WIRE_HOLE_D / 2, x0 - 1, xr + 1))   # ring wires
+    # ring wires: B3's four pads sit at r 7.6, 2.1 mm apart, on the temporal side -> arc slot
+    W = P.RING_WIRE_SLOT
+    a = W["half_deg"]
+    pts = [(0.0, 0.0)] + [(t * 12 * math.cos(math.radians(-a + 2 * a * i / 16)), 12 * math.sin(math.radians(-a + 2 * a * i / 16)))
+                          for i in range(17)]
+    slot = prism(pts, "yz", x0 - 1, xr + 1).intersect(tube("x", (0, 0, 0), W["r"][0], W["r"][1], x0 - 1, xr + 1))
+    c = c.cut(slot)
     return _to_eye(c.clean(), side)
 
 

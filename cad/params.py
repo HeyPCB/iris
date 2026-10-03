@@ -42,7 +42,7 @@ IRIS_D = 14.50               # disc diameter (slip fit in the 14.64 limbus bore)
 PUPIL_D = 5.6                # pupil hole
 SLEEVE_OD = 6.6              # black pupil sleeve, ID = PUPIL_D
 SLEEVE_BACK_X = 9.10         # sleeve runs back over the lens step (step top at 9.90)
-CAVITY_R_LED = 8.0           # iris-disc cone ring: inner radius over the LED band (LED corners at r 7.67)
+CAVITY_R_LED = 8.4           # iris-disc cone ring: inner radius over the LED band (as-built LED bodies reach r 8.09)
 CAVITY_X_LED = 8.9           # ... up to this x, then the cone tapers to the disc edge
 CORNEA_BASE_X = IRIS_FRONT_X # cornea base ring seats on the iris disc
 
@@ -86,7 +86,7 @@ CARRIER_POCKET = 8.6         # camera holder pocket
 CARRIER_RING_ID = 18.2       # B3 seat
 CARRIER_RING_FLAT = 8.5      # key flat distance from the centre (B3 flat at 8.4)
 FPC_SLOT = (7.0, 1.2)        # FPC exit slot (z height, y width), temporal
-RING_WIRE_HOLE_D = 2.0
+RING_WIRE_SLOT = {"r": (6.8, 8.4), "half_deg": 28.0}   # B3 wire pads: 4 at r 7.6, 2.1 mm pitch (as built)
 
 # ----------------------------------------------------------------------------------------------
 # Pan forks (spec 2.4, 7.1 P6)
@@ -227,6 +227,11 @@ NOSE = {"c": (28.5, 0.0, -15.0), "a": (10.0, 7.5, 16.0)}
 SPEAKER = {"d": 28.0, "t": 5.0, "c": (18.0, 0.0, -50.0)}   # c = back of the cone rim
 MAGNET = {"d": 6.0, "t": 3.0}
 
+# B4 as built: windows in the face shell over its sensors (brief frame x, y), touch electrodes
+B4_WINDOWS = {"tof": (58.0, 6.0, 6.0, 3.5), "als": (58.0, 2.12, 2.0), "mics": [(4.0, 6.0), (112.0, 6.0)], "mic_d": 1.0}
+B4_TOUCH = [(39.0, 49.0), (67.0, 77.0)]       # TP1, TP2 x ranges, y 1.25-6.25
+B4_TOUCH_Y = (1.25, 6.25)
+
 # Boards (spec 4, BINDING)
 B1 = {"w": 80.0, "h": 40.0, "t": 1.6, "fillet": 2.0, "f_x": -52.0, "f_h": 4.5, "b_h": 3.6,
       "holes_yz": [(-36, 16), (36, 16), (-36, -16), (36, -16)]}
@@ -238,6 +243,14 @@ B2_BOSS_Z = (-67.0, -61.6)   # BINDING boss tops at Z -61.6
 M2_HOLE = 2.2
 M2_INSERT_HOLE = 3.2
 MOUNT_KEEPOUT_D = 6.0        # no components within this diameter around board mounting holes (envelope)
+
+# BROW harness route (keep-out tubes for the check; the loop between the two ends is free)
+BROW_CABLE = {
+    "r": 1.75,
+    "cradle": [(-49.9, -23.0, 12.4), (-49.9, -23.0, 30.0)],                      # B1 J4 mouth, up past B1's top
+    "frame": [(18.3, 0.0, 55.2), (18.3, 0.0, 60.0), (18.3, -9.0, 61.0), (-30.0, -9.0, 61.0), (-42.0, -15.0, 57.0)],
+    "clip_x": -30.0,
+}
 
 # Clearance targets (task brief)
 CLEAR_MOVING = 0.5

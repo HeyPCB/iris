@@ -12,6 +12,15 @@ python -m cad.check    # motion check  -> cad/out/check.json
 python -m cad.fit      # board fit     -> cad/out/fit.json
 ```
 
+All three use the released board STEP files when they can find them (`--boards DIR`, the
+`IRIS_BOARDS` environment variable, or the four board repositories cloned next to this one) and the
+spec section 4 envelopes otherwise (`--envelopes` forces them). The committed `check.json` and
+`fit.json` were made with the released boards; each lists the board files and their SHA-1.
+
+```sh
+python -m cad.fit --boards ../ --quick   # e.g. with iris-cortex/, iris-brainstem/, ... cloned in ../
+```
+
 ## 1. Printed parts
 
 `cad/build.py` exports 27 printed part files (36 printed parts with the duplicates) as STEP and
@@ -50,8 +59,8 @@ STL and records each in [`cad/out/parts.json`](../cad/out/parts.json).
   (pins in bores, ball links on studs, the pivot face gap, the nested lids) are listed separately with
   their own expected minimum.
 
-**Result (latest run): 740 part pairs, 80 540 pose evaluations, 0 collisions, 0 pairs below the
-threshold, 0 joint or contact problems.**
+**Result (latest run, with the released boards B1-B4 and the BROW cable route): 744 part pairs,
+80 289 pose evaluations, 0 collisions, 0 pairs below the threshold, 0 joint or contact problems.**
 
 Smallest clearances between moving parts (exact B-rep distance at the worst pose):
 
@@ -71,8 +80,8 @@ Smallest clearances between moving parts (exact B-rep distance at the worst pose
 | pan crank vs its coupler; sclera vs coupler; pan crank vs servo | 0.60 mm | various |
 
 Smallest static clearances (one rigid group): nose block vs tilt servo case 0.30 mm; sclera pole
-bosses vs carrier 0.30 mm; skull side plates vs face shell 0.40 mm; cradle rear plate vs B1's back-side
-envelope 0.40 mm.
+bosses vs carrier 0.30 mm; B3's LEDs vs the iris cone ring 0.315 mm; BROW cable route vs B1 and B4
+0.35 mm; B3's back-side parts vs the carrier pocket 0.365 mm; skull side plates vs face shell 0.40 mm.
 
 Designed running fits, as built: nested lid shells and caps 0.20 mm (spec 2.5 accepts 0.2); ball-link
 faces on their own studs 0.20 mm; pan pivot axial gap (pole boss to fork arm) 0.30 mm.
@@ -83,7 +92,7 @@ vergence instead of version) were each checked as a whole assembly: no collision
 clearance 0.50 mm in every pose.
 
 **Negative controls.** Three poses outside the design range must collide, and do: pan 55 deg (fork arm
-hits the sclera rim, 13 mm3), tilt +45 deg (14 colliding pairs, cradle into frame and B2), upper lid
+hits the sclera rim, 13 mm3), tilt +45 deg (10 colliding pairs, cradle into the frame and B2), upper lid
 +85 deg (the upper pushrod sweeps over P8 and the left nasal pin). This shows the sweep detects contact.
 
 **Outside the lid envelope.** Sweeping the lids through their full mechanical ranges at every tilt
@@ -119,27 +128,36 @@ the upper margin at or below tilt + 55; the envelope above does.
 - The pose grid is discrete (worst case between grid points can be a few hundredths of a millimetre
   smaller; the B-rep refinement measures exactly at the worst grid pose only).
 
-## 3. Board fit
+## 3. Board fit (released boards)
 
-[`cad/fit.py`](../cad/fit.py) -> [`cad/out/fit.json`](../cad/out/fit.json). Until the boards are
-released this uses envelopes built from spec section 4: the outline with its fillet and Dia 2.2 holes,
-plus slabs at the maximum component height on each side over the whole outline (minus a Dia 6
-keep-out around each mounting hole). Each board is swept with everything that moves relative to it.
+[`cad/fit.py`](../cad/fit.py) -> [`cad/out/fit.json`](../cad/out/fit.json), with the four released
+boards (KiCad 10.0.6 STEP exports from the board repositories). How the real boards are used:
 
-| Board | Holes vs mount bosses | Mounting face to boss tips | Interference | Closest part |
-|---|---|---|---|---|
-| B1 Cortex (on the cradle) | 4 / 4 on axis (0.00 mm) | 0.00 mm (B face on bosses at X -53.6) | none | cradle rear plate 0.40 mm behind the 3.6 mm back-side envelope; side walls 1.0 mm from the front-side envelope; fixed parts more than 6 mm away over the whole tilt sweep |
-| B2 Brainstem (base) | 4 / 4 on axis (0.00 mm) | 0.00 mm (B face on bosses at Z -61.6) | none | base-plate bosses 0.50 mm from the back-side envelope's keep-outs; back cover 1.0 mm behind the USB-C edge; cradle 2.45 mm above B2's 12 mm front-side envelope at full look-up |
-| B3 Iris ring x2 (in each eye) | no holes (keyed flat in the carrier) | seated on the camera holder / dummy and clamped by the iris cone | none | sclera 1.46 mm |
-| B4 Brow (forehead) | 4 / 4 on axis (0.00 mm) | 0.00 mm (F face on the shell bosses at X +22.0) | none | face shell 0.50 mm from the front-side envelope's keep-outs, inner face 4.5 mm in front of the F face (spec: >= 2.0); brow hubs 3.0 mm below |
+- **Placement.** Each STEP is placed by its outline's top-left corner and F face through the binding
+  board-to-head mapping (spec 4). Nothing is fitted to the mechanism: the holes land where they land.
+- **Thickness.** KiCad exports the board body at 1.51 mm. Boards are normalised to the thickness that is
+  ordered: B1, B2 and B4 1.6 mm (B1 and B2 sit on their bosses with the B face, B4 with the F face),
+  B3 0.8 mm. B3 is also checked at the 1.51 mm of its fab STEP.
+- **Missing 3D models are added as envelopes** from the part drawings: B1 J1 (AFC07 FPC connector),
+  B2 J10-J19 (Molex 5267 vertical headers, 6.4 mm tall, est.) and J1/J2 (USB-C), B2's through-hole tails
+  under the board (3.2 mm headers, 1.5 mm USB-C legs), B3's twelve LEDs (2.1 x 2.1 x 0.9 mm, corners at
+  r 8.09).
+- Every board is swept with everything that moves relative to it (B1 rides the cradle over the full
+  tilt range; B2 and B4 against the cradle, eyes, lids, brows and pushrods; B3 inside each eye).
 
-B1's WROOM antenna zone grown by 5 mm (spec 7.1 P5) contains no cradle plastic.
+| Board | Holes vs boss axes | Seat gap | Collisions | Closest static part | Closest moving part (worst pose) |
+|---|---|---|---|---|---|
+| B1 Cortex | 4 / 4 found, Dia 2.2, **0.00 mm** off | 0.00 mm (B face on the bosses at X -53.6) | none | BROW cable route 0.35 mm; cradle rear plate 0.82 mm behind the ESP32 module; side walls 1.3 mm | right brow servo 10.2 mm (tilt -30) |
+| B2 Brainstem | 4 / 4, Dia 2.2, **0.00 mm** | 0.00 mm (B face on the bosses at Z -61.6) | none | back cover 1.0 mm behind the USB-C edge; header tails 2.2 mm above the base plate | cradle spine 8.05 mm above the 470 uF cans (tilt +25) |
+| B3 Iris ring (0.8 mm) | no holes; keyed flat | seated on the camera holder / dummy, clamped by the iris cone ring | none | LEDs 0.315 mm under the iris cone ring; back-side parts 0.365 mm above the carrier pocket | upper lid 4.07 mm |
+| B4 Brow | 4 / 4, Dia 2.2, **0.009 mm** | 0.00 mm (F face on the shell bosses at X +22.0) | none | BROW cable route 0.35 mm; face shell 2.5 mm from the back-side parts and 2.9 mm in front of the sensors (touch pads 0.3 mm off the electrodes) | brow hub 4.75 mm (brow -20) |
 
-**Real boards.** When the KiCad STEP exports exist, run
-`python -m cad.fit --B1 cortex.step --B2 brainstem.step --B3 ring.step --B4 brow.step`. The loader finds
-the board body by its outline size, places it by its top-left corner and F face, finds the Dia 2.2
-mounting holes on it and reports their offset from the boss axes, and sweeps every component model
-against the mechanism.
+- B1's WROOM antenna zone, grown by 5 mm (spec 7.1 P5), contains no cradle plastic.
+- **B3 at the fab STEP thickness (1.51 mm) does not fit**: it overlaps the iris cone ring by 21.3 mm3
+  (the clamp face would sit 0.71 mm higher) and the camera holder top by 0.27 mm3. The seat is designed
+  for the ordered 0.8 mm; make sure the ring is fabricated at 0.8 mm.
+- Face-shell windows match B4 as built: ToF slot 6 x 3.5 at (Y 0, Z 50.0), ALS Dia 2 at (Y 0, Z 53.9),
+  mic ports Dia 1.0 at (Y +-54, Z 50.0); solid pads fill the gap in front of the touch electrodes.
 
 ## 4. To test on the bench
 

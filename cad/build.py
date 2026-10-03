@@ -107,10 +107,41 @@ def export_envelopes():
             "on the optical axis, +X out of the lens; FPC neck stub toward -Y |\n")
 
 
+def _boxed(shape):
+    """Component compound -> one bounding box per touching group of solids (one per component, roughly);
+    keeps the assembly STEP small."""
+    from .geom import box
+    bbs = []
+    for s in shape.Solids():
+        b = s.BoundingBox()
+        bbs.append([b.xmin, b.xmax, b.ymin, b.ymax, b.zmin, b.zmax])
+    merged = True
+    while merged:
+        merged = False
+        out = []
+        for b in bbs:
+            for o in out:
+                if all(b[2 * i] <= o[2 * i + 1] + 0.05 and o[2 * i] <= b[2 * i + 1] + 0.05 for i in range(3)):
+                    o[:] = [min(o[0], b[0]), max(o[1], b[1]), min(o[2], b[2]), max(o[3], b[3]), min(o[4], b[4]), max(o[5], b[5])]
+                    merged = True
+                    break
+            else:
+                out.append(list(b))
+        bbs = out
+    return cq.Compound.makeCompound([box(*b) for b in bbs if min(b[1] - b[0], b[3] - b[2], b[5] - b[4]) > 0.05])
+
+
 def export_assembly(parts):
+    """Rest-pose assembly. Real boards go in light: their spec outline slab (B4: the 116 x 12 envelope
+    of its brow-shaped outline) plus one box per component. The full board models are in the board
+    repositories; the fit check uses them directly."""
+    from .parts import boards, eye
     asm = cq.Assembly(name="iris")
     for n, p in parts.items():
         shape = p.shape
+        if p.kind == "board" and n[:2] in A.REAL_BOARDS:
+            slab = eye.b3_envelope(n[-1])["board"] if n.startswith("B3") else boards.envelope(n[:2])["board"]
+            shape = cq.Compound.makeCompound([slab] + [_boxed(p.subs[k]) for k in ("f", "b") if k in p.subs])
         asm.add(shape, name=n, color=cq.Color(*p.color, 1.0 if p.alpha > 0.5 else 0.6))
     path = os.path.join(A.OUT, "iris_assembly.step")
     asm.save(path)
@@ -139,4 +170,10 @@ def main():
 
 
 if __name__ == "__main__":
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--boards", default=None, help="folder with the board STEP files (default: auto)")
+    ap.add_argument("--envelopes", action="store_true", help="use the spec section 4 board envelopes")
+    a = ap.parse_args()
+    A.use_real_boards({} if a.envelopes else A.resolve_boards(a.boards))
     main()

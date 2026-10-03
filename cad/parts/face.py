@@ -80,17 +80,23 @@ def face_shell():
         feats.append(box(xf - t - 2.3, xf - t + 0.01, s * 35.5, s * 44.5, -64.0, -55.0))   # base magnet pads
     for y, z in P.B4["holes_yz"]:
         feats.append(cyl("x", (0, y, z), 2.5, P.B4["f_x"], xf - t + 0.01))
+    # touch pads: fill the air gap in front of B4's touch electrodes with plastic (0.3 mm off the board)
+    y0, y1 = P.B4_TOUCH_Y
+    for x0, x1 in P.B4_TOUCH:
+        feats.append(box(P.B4["f_x"] + 0.3, xf - t + 0.01, x0 - 58.0, x1 - 58.0, 56.0 - y1, 56.0 - y0))
     face = fuse_all([face] + feats)
     # holes
     cuts = []
     for side in P.SIDES:
         y, z = P.SERVOS["brow_" + side][0][1:]
         cuts.append(cyl("x", (0, y, z), P.BROW_HOLE_D / 2, 15, 40))
-    zc = P.B4["zc"]
-    cuts.append(box(15, 40, -3.0, 3.0, zc - 1.75, zc + 1.75))                      # ToF slot 6 x 3.5
-    cuts.append(cyl("x", (0, 66.0 - 58.0, zc), 1.0, 15, 40))                        # ALS Dia 2
-    for y in (4.0 - 58.0, 112.0 - 58.0):
-        cuts.append(cyl("x", (0, y, zc), 0.5, 15, 40))                              # mic ports Dia 1
+    Wn = P.B4_WINDOWS                    # as-built B4 window positions (brief frame -> H: Y = x - 58, Z = 56 - y)
+    tx, ty, tw, th = Wn["tof"]
+    cuts.append(box(15, 40, tx - 58.0 - tw / 2, tx - 58.0 + tw / 2, 56.0 - ty - th / 2, 56.0 - ty + th / 2))   # ToF slot
+    ax, ay, ad = Wn["als"]
+    cuts.append(cyl("x", (0, ax - 58.0, 56.0 - ay), ad / 2, 15, 40))                                     # ALS
+    for mx, my in Wn["mics"]:
+        cuts.append(cyl("x", (0, mx - 58.0, 56.0 - my), Wn["mic_d"] / 2, 15, 40))                       # mic ports
     for y, z in P.B4["holes_yz"]:
         cuts.append(cyl("x", (0, y, z), 0.8, P.B4["f_x"] - 1, xf - t - 0.6))        # M2 self-tap
     sz = P.SPEAKER["c"][2]

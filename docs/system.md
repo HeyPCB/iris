@@ -243,5 +243,41 @@ All board coordinates are in the head frame H (origin midway between the eye cen
 | B3 | P4 carrier + P3 clamp | (no holes) | B face x_eye +7.0 | - |
 | B4 | P14 face shell | (+22, +-24, 50), (+22, +-46, 50) | X +22.0 (F face) | shell >= 2.0 mm in front of F |
 
-The fit of each board against these mounts is checked by `cad/fit.py`; results are in
-[verification.md](verification.md).
+The fit of each board against these mounts is checked by `cad/fit.py` with the released board STEP
+files; results are in [verification.md](verification.md).
+
+## As-built boards (released, KiCad 10.0.6 exports)
+
+The four boards are final. These are the as-built facts the mechanism depends on, in the brief frame
+(mm from the outline's top-left corner, x right, y down, seen from F) and in the head frame H.
+
+| Board | Outline | Holes (brief) -> H | Faces | Heights (as built) |
+|---|---|---|---|---|
+| B1 Cortex | 80 x 40, 2 mm fillets | (4,4), (76,4), (4,36), (76,36) -> (Y, Z) (-36,+16), (+36,+16), (-36,-16), (+36,-16) | F X -52.0, B X -53.6; Y = x - 40, Z = 20 - y | F <= 3.1 mm in the STEP (<= 4.32 stated), B <= 3.2 (ESP32-S3 module on B, x 30.95-49.05, y 0.5-26.1, antenna at the top) |
+| B2 Brainstem | 64 x 80, 3 mm fillets | (4,4), (60,4), (4,76), (60,76) -> (X, Y) (-34,+28), (-34,-28), (-106,+28), (-106,-28) | F up at Z -60.0; X = -30 - y, Y = 32 - x | F <= 7.8 mm (470 uF cans); all parts on F; THT tails below B |
+| B3 Iris ring | Dia 18, key flat 8.4 from the centre, Dia 7.6 hole | none | B face x_eye +7.0; right eye +x -> +Y_eye, +y -> -Z_eye (pads temporal, flat down); left eye turned 180 deg | ordered **0.8 mm** (the fab STEP body is 1.51); LEDs to r 8.09, 0.84 tall; back parts 0.58 |
+| B4 Brow | brow shape inside 116 x 12: 12.0 tall at the centre, 9.0 at the ends | NPTH (12,6), (34,6), (82,6), (104,6) -> Y -46, -24, +24, +46 at Z 50.0 | F X +22.0; Y = x - 58, Z = 56 - y | F <= 1.65 mm, B <= 3.05 (J1) |
+
+Connectors and windows that the mechanism routes to:
+
+| Board | Item | Brief position | In H | Opens toward |
+|---|---|---|---|---|
+| B1 | J1 camera FPC (AFC07, F) | x 0.3-5.8, y 11-29 | Y -39.7 ... -34.2, Z -9 ... +9 | -Y: FPC enters through the window in the cradle's right side wall |
+| B1 | J2 RING_R (SH-4, F) | pin 1 (9.50, 34.65), mouth y 39.28 | Y -31 ... -26, Z -19.3 | -Z |
+| B1 | J3 RING_L (SH-4, F) | pin 1 (74.60, 21.50), mouth x 79.22 | Y +39.2, Z -3 ... +3 | +Y: wires enter through the window in the cradle's left side wall |
+| B1 | J4 BROW (SH-8, F) | pin 1 (20.50, 12.20), mouth y 7.58 | Y -28 ... -18, Z +12.4 | +Z: moved down from the spec's top-edge zone by the antenna keep-out; the cable runs up behind the top rail |
+| B1 | J5 H1, J6 H2 (SH-10, SH-7, F) | bottom edge | Y -17 ... -5 and +5 ... +14, Z -19.3 | -Z |
+| B2 | J1 USB-C PWR, J2 USB-C DATA | (17.0, 76.3), (47.0, 76.3) | X -106.3, Y +15 / -15 | -X, through the back cover's cut-outs |
+| B2 | J5 H1, J6 H2, J7 SPK (SH, F) | y 3.4 | X -33.4, Y -6.5 / +8.5 / +19 | +X (front) |
+| B2 | J10-J14 / J15-J19 servo headers (5267 vertical) | x 3.5 / 60.5, y 15-55 | Y +28.5 ... +23.5 / -28.5 ... -23.5 | up |
+| B3 | wire pads P1-P4 (back) | r 7.6, 2.1 mm apart, temporal | - | wires go back through the arc slot in the carrier |
+| B4 | VL53L1X window, 6 x 3.5 slot | centred (58, 6) | Y 0, Z 50.0 | face-shell slot |
+| B4 | APDS-9306 window, Dia 2 | (58, 2.12) | Y 0, Z 53.9 | face-shell hole |
+| B4 | mic ports, Dia 1.0 | (4, 6), (112, 6) | Y -54 / +54, Z 50.0 | face-shell holes |
+| B4 | touch electrodes TP1, TP2 | x 39-49 and 67-77, y 1.25-6.25 | Y -19 ... -9 and +9 ... +19, Z 49.75-54.75 | solid pads in the face shell fill the gap in front of them |
+| B4 | J1 BROW (SH-8, B) | centred (58, 3.35) | Y 0, Z 52.65, behind the board | +Z: the cable goes over B4's top edge |
+
+Some parts have no 3D model in the board STEP exports; the fit adds them as envelopes from their
+drawings: B1 J1 (AFC07 FPC connector), B2 J10-J19 (Molex 5267 vertical headers, est. 6.4 mm tall) and
+J1/J2 (USB-C), B2's through-hole tails below the board (3.2 mm for the headers, 1.5 mm for the USB-C
+shell legs), and B3's twelve LEDs.

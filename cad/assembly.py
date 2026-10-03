@@ -88,7 +88,8 @@ def _defs():
     add("nasal_pin_R", "fixed", "purchased", "steel", lambda: linkage.nasal_pin("R"), label="Dowel Dia 3 x 8 (right nasal lid pin)")
     add("speaker", "fixed", "purchased", "speaker", purchased.speaker, label="Speaker 28 mm envelope")
     for b in ("B2", "B4"):
-        add(f"{b}_env", "fixed", "board", "pcb_env", (lambda b=b: boards.envelope(b)), label=f"{b} envelope (spec 4)")
+        add(b, "fixed", "board", "pcb_env", (lambda b=b: _board(b)), label=f"{b} envelope (spec 4)")
+    add("brow_cable_frame", "fixed", "harness", "fpc", linkage.brow_cable_frame, label="BROW cable route, frame side (keep-out)")
 
     # ---- cradle
     add("spine", "cradle", "printed", "cradle", cradle.spine, pnum="P5", label="Cradle spine + rear plate", material="PETG")
@@ -102,7 +103,8 @@ def _defs():
     add("tongue_pin", "cradle", "purchased", "steel", linkage.tongue_drive_pin, label="Dowel Dia 3 x 6 (tongue drive pin)")
     add("nasal_pin_L", "cradle", "purchased", "steel", lambda: linkage.nasal_pin("L"), label="Dowel Dia 3 x 7 (left nasal lid pin)")
     add("bearing_R", "cradle", "purchased", "steel", lambda: purchased.mr63(-1.0), label="MR63ZZ")
-    add("B1_env", "cradle", "board", "pcb_env", lambda: boards.envelope("B1"), label="B1 envelope (spec 4.1)")
+    add("B1", "cradle", "board", "pcb_env", lambda: _board("B1"), label="B1 envelope (spec 4.1)")
+    add("brow_cable_cradle", "cradle", "harness", "fpc", linkage.brow_cable_cradle, label="BROW cable route, cradle side (keep-out)")
 
     # ---- eyes
     for s in P.SIDES:
@@ -112,7 +114,7 @@ def _defs():
         add(f"iris_{s}", g, "printed", "iris", (lambda s=s: eye.iris_disc(s)), pnum="P3", label="Iris disc + pupil sleeve", material="SLA translucent", export_as="iris_disc")
         add(f"carrier_{s}", g, "printed", "carrier", (lambda s=s: eye.carrier(s)), pnum="P4",
             label="Camera carrier (R)" if s == "R" else "Dummy carrier (L)", material="PLA/PETG black")
-        add(f"B3_env_{s}", g, "board", "pcb_env", (lambda s=s: eye.b3_envelope(s)), label="B3 envelope (spec 4.4)")
+        add(f"B3_{s}", g, "board", "pcb_env", (lambda s=s: _board("B3", s)), label="B3 envelope (spec 4.4)")
         add(f"keel_stud_{s}", g, "purchased", "steel", (lambda s=s: eye.keel_stud(s)), label="M2 ball stud")
         if s == "R":
             add("camera", g, "purchased", "camera", eye.camera, label="OV2640 module envelope")
@@ -135,6 +137,33 @@ def _defs():
     return D
 
 
+REAL_BOARDS = {}       # board -> STEP path; set by use_real_boards()
+REAL_INFO = {}
+
+
+def use_real_boards(paths):
+    """Replace the spec envelopes by the real board STEP files (dict board -> path)."""
+    REAL_BOARDS.clear()
+    REAL_BOARDS.update(paths or {})
+
+
+def resolve_boards(arg=None):
+    """Board STEP files from --boards DIR, the IRIS_BOARDS environment variable, or board repositories
+    cloned next to this one."""
+    dirs = [arg, os.environ.get("IRIS_BOARDS"), os.path.dirname(os.path.dirname(HERE))]
+    return boards.find_real(dirs) if any(dirs) else {}
+
+
+def _board(b, side=None):
+    if b in REAL_BOARDS:
+        parts, info = boards.load_real(b, REAL_BOARDS[b])
+        REAL_INFO[b] = info
+        return boards.place_real(b, parts, side)
+    if b == "B3":
+        return eye.b3_envelope(side)
+    return boards.envelope(b)
+
+
 def _servo(name):
     sv = purchased.scs0009(name)
     return {"body": sv["body"], "spline": sv["spline"]}
@@ -155,7 +184,7 @@ def _compound(d):
 def build(use_cache=True, verbose=False):
     """Return an ordered dict name -> Part with shapes (and sub-shapes) filled in."""
     os.makedirs(CACHE, exist_ok=True)
-    key = _src_hash()
+    key = _src_hash() + "".join(f"|{b}:{os.path.getsize(f)}:{int(os.path.getmtime(f))}" for b, f in sorted(REAL_BOARDS.items()))
     stamp = os.path.join(CACHE, "stamp.json")
     cached = use_cache and os.path.exists(stamp) and json.load(open(stamp)).get("key") == key
     parts = {}
@@ -180,6 +209,9 @@ def build(use_cache=True, verbose=False):
             for sub, s in p.subs.items():
                 s.exportBrep(f"{brep}.{sub}.brep")
             json.dump({"subs": list(p.subs)}, open(brep + ".json", "w"))
+        if p.kind == "board" and p.name[:2] in REAL_BOARDS:
+            p.label = f"{p.name[:2]} as built ({boards.REAL[p.name[:2]]['repo']})"
+            p.color = COL["pcb"]
         parts[p.name] = p
     if not cached:
         json.dump({"key": key}, open(stamp, "w"))

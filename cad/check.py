@@ -124,20 +124,22 @@ CONTACTS = [
     ("side_plate_*", "top_bridge", "screwed"), ("side_plate_*", "base_plate", "screwed"),
     ("side_plate_R", "temple_pin_R", "pin pressed in"), ("side_plate_L", "temple_pin_L", "pin pressed in"),
     ("top_bridge", "servo_brow_*/body", "brow servo ears screwed to the brackets"),
-    ("base_plate", "B2_env/board", "B2 B face on the bosses"), ("base_plate", "speaker", "speaker in its ring"),
+    ("base_plate", "B2/board", "B2 B face on the bosses"), ("base_plate", "speaker", "speaker in its ring"),
     ("face_shell", "base_plate", "shell sits on the base plate"), ("face_shell", "back_cover", "seam"),
-    ("face_shell", "B4_env/board", "B4 F face on the shell bosses"), ("back_cover", "base_plate", "cover sits on the base"),
+    ("face_shell", "B4/board", "B4 F face on the shell bosses"), ("back_cover", "base_plate", "cover sits on the base"),
     ("spine", "fork_*", "bolted"), ("spine", "temple_arm_*", "bolted at the rail ends"),
-    ("spine", "B1_env/board", "B1 B face on the bosses"), ("spine", "tongue_pin", "drive pin in the radial slot"),
+    ("spine", "B1/board", "B1 B face on the bosses"), ("spine", "tongue_pin", "drive pin in the radial slot"),
     ("temple_arm_*", "servo_pan_*/body", "pan servo ears on the ledges"), ("temple_arm_*", "temporal_pin_*", "pressed"),
     ("temple_arm_R", "bearing_R", "pressed"), ("fork_*", "pole_pins_*", "pressed"),
     ("tilt_tongue", "nasal_pin_L", "pressed"), ("tilt_tongue", "tongue_pin", "pressed"),
     ("sclera_*/shell", "cornea_*", "glued in the limbus bore"), ("sclera_*/shell", "carrier_*", "glued"),
     ("sclera_*/shell", "iris_*", "slip fit in the bore"), ("sclera_*/bosses", "sclera_*/shell", "same part"),
     ("sclera_*/shell", "keel_stud_*", "screwed"), ("carrier_*", "camera", "camera in its pocket"),
-    ("carrier_*", "B3_env_*/*", "B3 seated in the carrier"), ("iris_*", "B3_env_*/*", "cone ring clamps B3"),
+    ("carrier_*", "B3_*/board", "B3 seated in the carrier"), ("iris_*", "B3_*/board", "cone ring clamps B3"),
     ("iris_*", "cornea_*", "cornea base on the iris disc"), ("iris_*", "camera", "pupil sleeve over the lens step"),
-    ("camera", "B3_env_*/*", "B3 rests on the camera holder"), ("iris_*", "carrier_*", "cone ring on the carrier wall"),
+    ("camera", "B3_R/board", "B3 rests on the camera holder"), ("carrier_L", "B3_L/board", "B3 rests on the dummy module"),
+    ("B1/f", "brow_cable_cradle", "BROW cable plugged into J4"), ("B4/b", "brow_cable_frame", "BROW cable plugged into J1"),
+    ("top_bridge", "brow_cable_frame", "cable clip"), ("iris_*", "carrier_*", "cone ring on the carrier wall"),
     ("lid*_*/shell", "lid*_*/boss", "same part"), ("lid*_stud_*", "lid*_*/*", "stud screwed into the boss"),
     ("horn*_stud_*", "horn*_*", "stud screwed into the horn"), ("brow_*", "brow_hub_*", "keyed"),
     ("pan_crank_*", "crank_stud_*", "screwed"),
@@ -348,6 +350,8 @@ def run(quick=False, verbose=True):
         "method": __doc__.split("Method")[1].strip(),
         "thresholds": {"moving_mm": P.CLEAR_MOVING, "static_mm": P.CLEAR_STATIC},
         "tessellation_tol_mm": TOL,
+        "boards": ({b: A.boards.source_label(p) for b, p in sorted(A.REAL_BOARDS.items())}
+                   if A.REAL_BOARDS else "spec section 4 envelopes"),
         "grid": G,
         "lid_envelope": {"upper": "clamp(UP_REST + tilt + [%g, %g], %s)" % (P.UP_FOLLOW["closed"], P.UP_FOLLOW["open_max"], list(P.UP_RANGE)),
                          "lower": "clamp(LO_REST + 0.5 tilt + [%g, %g], %s)" % (P.LO_FOLLOW["low"], P.LO_FOLLOW["high"], list(P.LO_RANGE))},
@@ -503,5 +507,8 @@ def mechanical_range(items, by_group, groups, verbose):
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--quick", action="store_true")
+    ap.add_argument("--boards", default=None, help="folder with the board STEP files (default: auto)")
+    ap.add_argument("--envelopes", action="store_true", help="use the spec section 4 board envelopes")
     a = ap.parse_args()
+    A.use_real_boards({} if a.envelopes else A.resolve_boards(a.boards))
     run(quick=a.quick)

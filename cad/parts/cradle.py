@@ -31,6 +31,8 @@ def spine():
     s = s.cut(box(S["x"][0], S["x"][1], D["y"][0] - 1, D["y"][1] + 1, -S["w"] / 2, S["w"] / 2))
     # FPC window through the right side wall (camera FPC turns +Y along B1's front face into J1)
     s = s.cut(box(-53.2, -48.2, -P.SIDE_WALL_Y[1] - 1, -P.SIDE_WALL_Y[0] + 1, -4.2, 4.2))
+    # ring-wire window through the left side wall (B1 J3 RING_L opens toward +Y at Y +39.2)
+    s = s.cut(box(-53.2, -47.2, P.SIDE_WALL_Y[0] - 1, P.SIDE_WALL_Y[1] + 1, -4.5, 4.5))
     # fork mounting holes (M2, along X through the rails)
     for y in P.Y_EYE.values():
         for z in (9.5, -9.5):

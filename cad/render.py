@@ -84,9 +84,9 @@ def hero(parts, ms, path):
     for full in (True, False):
         sc = Scene(size=(1300, 1150), bg=(0.98, 0.98, 0.99), bg2=(0.84, 0.87, 0.91))
         if full:
-            _scene_add(sc, parts, ms, pose, alpha={"back_cover": 1.0})
+            _scene_add(sc, parts, ms, pose, alpha={"back_cover": 1.0}, hide=("brow_cable_frame", "brow_cable_cradle"))
         else:
-            _scene_add(sc, parts, ms, pose, hide=("back_cover", "face_shell", "side_plate_R", "B4_env", "top_bridge"))
+            _scene_add(sc, parts, ms, pose, hide=("back_cover", "face_shell", "side_plate_R", "top_bridge"))
         _frame(sc, view, focal, zoom=1.3)
         panels.append(sc.image())
     img = np.concatenate(panels, axis=1)
@@ -96,7 +96,7 @@ def hero(parts, ms, path):
 def mechanism(parts, ms, path):
     sc = Scene(size=(2000, 1400), bg=(0.98, 0.98, 0.99), bg2=(0.84, 0.87, 0.91))
     pose = gaze_pose("rest")
-    _scene_add(sc, parts, ms, pose, hide=("back_cover", "face_shell", "top_bridge", "side_plate_L", "B4_env"))
+    _scene_add(sc, parts, ms, pose, hide=("back_cover", "face_shell", "top_bridge", "side_plate_L"))
     _frame(sc, (0.8, 1.0, 0.6), (-30, 0, -5), zoom=1.2)
     sc.save(path)
 
@@ -104,8 +104,8 @@ def mechanism(parts, ms, path):
 def _explode_vec(pn, p):
     g = p.group
     s = -1.0 if (pn.endswith("_R") or g.endswith("_R") or "_R/" in pn) else 1.0
-    fixed = {"face_shell": (195, 0, 0), "B4_env": (112, 0, 18), "back_cover": (-150, 0, 0),
-             "top_bridge": (0, 0, 85), "base_plate": (0, 0, -75), "B2_env": (-15, 0, -48), "speaker": (35, 0, -60),
+    fixed = {"face_shell": (195, 0, 0), "B4": (150, 0, 18), "back_cover": (-150, 0, 0),
+             "top_bridge": (0, 0, 85), "base_plate": (0, 0, -75), "B2": (-15, 0, -48), "speaker": (35, 0, -60),
              "nose_block": (0, -18, 0), "temple_pin_R": (-20, -110, 0), "temple_pin_L": (-20, 110, 0),
              "nasal_pin_R": (6, -26, 0)}
     if pn in fixed:
@@ -146,7 +146,8 @@ def _explode_vec(pn, p):
 
 def exploded(parts, ms, path):
     sc = Scene(size=(2400, 1350), bg=(0.98, 0.98, 0.99), bg2=(0.86, 0.88, 0.92))
-    _scene_add(sc, parts, ms, gaze_pose("rest"), explode=_explode_vec, alpha={"face_shell": 0.5, "back_cover": 0.4})
+    _scene_add(sc, parts, ms, gaze_pose("rest"), explode=_explode_vec, alpha={"face_shell": 0.5, "back_cover": 0.4},
+               hide=("brow_cable_frame", "brow_cable_cradle"))
     _frame(sc, (0.55, -1.0, 0.45), (0, 0, 0), zoom=1.75)
     sc.save(path)
 
@@ -209,7 +210,10 @@ def gif(parts, ms, path, size=(720, 312)):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--only", default="")
+    ap.add_argument("--boards", default=None, help="folder with the board STEP files (default: auto)")
+    ap.add_argument("--envelopes", action="store_true", help="use the spec section 4 board envelopes")
     a = ap.parse_args()
+    A.use_real_boards({} if a.envelopes else A.resolve_boards(a.boards))
     os.makedirs(MEDIA, exist_ok=True)
     parts, ms = _load()
     todo = a.only.split(",") if a.only else ["hero", "mechanism", "exploded", "gaze", "gif"]

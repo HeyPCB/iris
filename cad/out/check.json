@@ -7,6 +7,24 @@
   "static_mm": 0.3
  },
  "tessellation_tol_mm": 0.04,
+ "boards": {
+  "B1": {
+   "file": "iris_cortex/fab/iris_cortex.step",
+   "sha1": "0029a553afb3"
+  },
+  "B2": {
+   "file": "iris_brainstem/fab/iris_brainstem.step",
+   "sha1": "5a81bf8f219a"
+  },
+  "B3": {
+   "file": "iris_ring/fab/iris_ring.step",
+   "sha1": "9f5d5fa34a96"
+  },
+  "B4": {
+   "file": "iris_brow/fab/iris_brow.step",
+   "sha1": "52b595c03620"
+  }
+ },
  "grid": {
   "tilt": [
    -30.0,
@@ -78,7 +96,7 @@
   "upper": "clamp(UP_REST + tilt + [-37, 36], [-40.0, 55.0])",
   "lower": "clamp(LO_REST + 0.5 tilt + [-30, 14], [-50.0, -6.0])"
  },
- "pose_evaluations": 80540,
+ "pose_evaluations": 80289,
  "group_pairs_swept": 131,
  "non_manifold_meshes": [],
  "summary": {
@@ -121,7 +139,7 @@
    "min_mm": 0.3,
    "pass": true
   },
-  "pairs_checked": 740
+  "pairs_checked": 744
  },
  "collisions": [],
  "below_threshold": [],
@@ -782,7 +800,7 @@
    "reason": "",
    "mesh_min_mm": 0.834,
    "pose": {
-    "tilt": 6.25,
+    "tilt": 12.5,
     "pan_L": 35.0
    },
    "overlap_mm3": 0.0,
@@ -962,6 +980,108 @@
    "pass": true
   },
   {
+   "a": "iris_L",
+   "b": "B3_L/f",
+   "groups": [
+    "eye_L",
+    "eye_L"
+   ],
+   "type": "static",
+   "required_mm": 0.3,
+   "reason": "",
+   "mesh_min_mm": 0.309,
+   "pose": {},
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.315,
+   "min_mm": 0.315,
+   "pass": true
+  },
+  {
+   "a": "iris_R",
+   "b": "B3_R/f",
+   "groups": [
+    "eye_R",
+    "eye_R"
+   ],
+   "type": "static",
+   "required_mm": 0.3,
+   "reason": "",
+   "mesh_min_mm": 0.309,
+   "pose": {},
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.315,
+   "min_mm": 0.315,
+   "pass": true
+  },
+  {
+   "a": "B1/board",
+   "b": "brow_cable_cradle",
+   "groups": [
+    "cradle",
+    "cradle"
+   ],
+   "type": "static",
+   "required_mm": 0.3,
+   "reason": "",
+   "mesh_min_mm": 0.35,
+   "pose": {},
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.35,
+   "min_mm": 0.35,
+   "pass": true
+  },
+  {
+   "a": "B4/board",
+   "b": "brow_cable_frame",
+   "groups": [
+    "fixed",
+    "fixed"
+   ],
+   "type": "static",
+   "required_mm": 0.3,
+   "reason": "",
+   "mesh_min_mm": 0.35,
+   "pose": {},
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.35,
+   "min_mm": 0.35,
+   "pass": true
+  },
+  {
+   "a": "carrier_L",
+   "b": "B3_L/b",
+   "groups": [
+    "eye_L",
+    "eye_L"
+   ],
+   "type": "static",
+   "required_mm": 0.3,
+   "reason": "",
+   "mesh_min_mm": 0.365,
+   "pose": {},
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.365,
+   "min_mm": 0.365,
+   "pass": true
+  },
+  {
+   "a": "carrier_R",
+   "b": "B3_R/b",
+   "groups": [
+    "eye_R",
+    "eye_R"
+   ],
+   "type": "static",
+   "required_mm": 0.3,
+   "reason": "",
+   "mesh_min_mm": 0.365,
+   "pose": {},
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.365,
+   "min_mm": 0.365,
+   "pass": true
+  },
+  {
    "a": "side_plate_L",
    "b": "face_shell",
    "groups": [
@@ -996,45 +1116,11 @@
    "pass": true
   },
   {
-   "a": "spine",
-   "b": "B1_env/b",
+   "a": "B3_R/b",
+   "b": "camera",
    "groups": [
-    "cradle",
-    "cradle"
-   ],
-   "type": "static",
-   "required_mm": 0.3,
-   "reason": "",
-   "mesh_min_mm": 0.4,
-   "pose": {},
-   "overlap_mm3": 0.0,
-   "exact_min_mm": 0.4,
-   "min_mm": 0.4,
-   "pass": true
-  },
-  {
-   "a": "base_plate",
-   "b": "B2_env/b",
-   "groups": [
-    "fixed",
-    "fixed"
-   ],
-   "type": "static",
-   "required_mm": 0.3,
-   "reason": "",
-   "mesh_min_mm": 0.5,
-   "pose": {},
-   "overlap_mm3": 0.0,
-   "exact_min_mm": 0.5,
-   "min_mm": 0.5,
-   "pass": true
-  },
-  {
-   "a": "face_shell",
-   "b": "B4_env/f",
-   "groups": [
-    "fixed",
-    "fixed"
+    "eye_R",
+    "eye_R"
    ],
    "type": "static",
    "required_mm": 0.3,
@@ -1115,59 +1201,59 @@
    "pass": true
   },
   {
-   "a": "back_cover",
-   "b": "B2_env/board",
+   "a": "B3_R/f",
+   "b": "camera",
    "groups": [
-    "fixed",
-    "fixed"
+    "eye_R",
+    "eye_R"
    ],
    "type": "static",
    "required_mm": 0.3,
    "reason": "",
-   "mesh_min_mm": 1.0,
+   "mesh_min_mm": 0.79,
    "pose": {},
    "overlap_mm3": 0.0,
-   "exact_min_mm": 1.0,
-   "min_mm": 1.0,
+   "exact_min_mm": 0.79,
+   "min_mm": 0.79,
    "pass": true
   },
   {
-   "a": "back_cover",
-   "b": "B2_env/f",
+   "a": "carrier_L",
+   "b": "B3_L/f",
    "groups": [
-    "fixed",
-    "fixed"
+    "eye_L",
+    "eye_L"
    ],
    "type": "static",
    "required_mm": 0.3,
    "reason": "",
-   "mesh_min_mm": 1.0,
+   "mesh_min_mm": 0.79,
    "pose": {},
    "overlap_mm3": 0.0,
-   "exact_min_mm": 1.0,
-   "min_mm": 1.0,
+   "exact_min_mm": 0.79,
+   "min_mm": 0.79,
    "pass": true
   },
   {
-   "a": "back_cover",
-   "b": "B2_env/b",
+   "a": "carrier_R",
+   "b": "B3_R/f",
    "groups": [
-    "fixed",
-    "fixed"
+    "eye_R",
+    "eye_R"
    ],
    "type": "static",
    "required_mm": 0.3,
    "reason": "",
-   "mesh_min_mm": 1.0,
+   "mesh_min_mm": 0.8,
    "pose": {},
    "overlap_mm3": 0.0,
-   "exact_min_mm": 1.0,
-   "min_mm": 1.0,
+   "exact_min_mm": 0.8,
+   "min_mm": 0.8,
    "pass": true
   },
   {
    "a": "spine",
-   "b": "B1_env/f",
+   "b": "B1/b",
    "groups": [
     "cradle",
     "cradle"
@@ -1175,11 +1261,62 @@
    "type": "static",
    "required_mm": 0.3,
    "reason": "",
+   "mesh_min_mm": 0.815,
+   "pose": {},
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 0.815,
+   "min_mm": 0.815,
+   "pass": true
+  },
+  {
+   "a": "back_cover",
+   "b": "B2/board",
+   "groups": [
+    "fixed",
+    "fixed"
+   ],
+   "type": "static",
+   "required_mm": 0.3,
+   "reason": "",
    "mesh_min_mm": 1.0,
    "pose": {},
    "overlap_mm3": 0.0,
    "exact_min_mm": 1.0,
    "min_mm": 1.0,
+   "pass": true
+  },
+  {
+   "a": "iris_L",
+   "b": "B3_L/b",
+   "groups": [
+    "eye_L",
+    "eye_L"
+   ],
+   "type": "static",
+   "required_mm": 0.3,
+   "reason": "",
+   "mesh_min_mm": 1.004,
+   "pose": {},
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 1.006,
+   "min_mm": 1.006,
+   "pass": true
+  },
+  {
+   "a": "iris_R",
+   "b": "B3_R/b",
+   "groups": [
+    "eye_R",
+    "eye_R"
+   ],
+   "type": "static",
+   "required_mm": 0.3,
+   "reason": "",
+   "mesh_min_mm": 1.004,
+   "pose": {},
+   "overlap_mm3": 0.0,
+   "exact_min_mm": 1.006,
+   "min_mm": 1.006,
    "pass": true
   },
   {
@@ -1214,123 +1351,6 @@
    "overlap_mm3": 0.0,
    "exact_min_mm": 1.06,
    "min_mm": 1.06,
-   "pass": true
-  },
-  {
-   "a": "servo_lidL_R/body",
-   "b": "servo_lidL_L/body",
-   "groups": [
-    "fixed",
-    "fixed"
-   ],
-   "type": "static",
-   "required_mm": 0.3,
-   "reason": "",
-   "mesh_min_mm": 1.4,
-   "pose": {},
-   "overlap_mm3": 0.0,
-   "exact_min_mm": 1.4,
-   "min_mm": 1.4,
-   "pass": true
-  },
-  {
-   "a": "servo_lidU_R/body",
-   "b": "servo_lidU_L/body",
-   "groups": [
-    "fixed",
-    "fixed"
-   ],
-   "type": "static",
-   "required_mm": 0.3,
-   "reason": "",
-   "mesh_min_mm": 1.4,
-   "pose": {},
-   "overlap_mm3": 0.0,
-   "exact_min_mm": 1.4,
-   "min_mm": 1.4,
-   "pass": true
-  },
-  {
-   "a": "sclera_L/shell",
-   "b": "B3_env_L/board",
-   "groups": [
-    "eye_L",
-    "eye_L"
-   ],
-   "type": "static",
-   "required_mm": 0.3,
-   "reason": "",
-   "mesh_min_mm": 1.463,
-   "pose": {},
-   "overlap_mm3": 0.0,
-   "exact_min_mm": 1.49,
-   "min_mm": 1.49,
-   "pass": true
-  },
-  {
-   "a": "sclera_R/shell",
-   "b": "B3_env_R/board",
-   "groups": [
-    "eye_R",
-    "eye_R"
-   ],
-   "type": "static",
-   "required_mm": 0.3,
-   "reason": "",
-   "mesh_min_mm": 1.463,
-   "pose": {},
-   "overlap_mm3": 0.0,
-   "exact_min_mm": 1.49,
-   "min_mm": 1.49,
-   "pass": true
-  },
-  {
-   "a": "face_shell",
-   "b": "temple_pin_R",
-   "groups": [
-    "fixed",
-    "fixed"
-   ],
-   "type": "static",
-   "required_mm": 0.3,
-   "reason": "",
-   "mesh_min_mm": 1.5,
-   "pose": {},
-   "overlap_mm3": 0.0,
-   "min_mm": 1.5,
-   "pass": true
-  },
-  {
-   "a": "face_shell",
-   "b": "temple_pin_L",
-   "groups": [
-    "fixed",
-    "fixed"
-   ],
-   "type": "static",
-   "required_mm": 0.3,
-   "reason": "",
-   "mesh_min_mm": 1.5,
-   "pose": {},
-   "overlap_mm3": 0.0,
-   "min_mm": 1.5,
-   "pass": true
-  },
-  {
-   "a": "side_plate_L",
-   "b": "back_cover",
-   "groups": [
-    "fixed",
-    "fixed"
-   ],
-   "type": "static",
-   "required_mm": 0.3,
-   "reason": "",
-   "mesh_min_mm": 1.499,
-   "pose": {},
-   "overlap_mm3": 0.0,
-   "exact_min_mm": 1.5,
-   "min_mm": 1.5,
    "pass": true
   }
  ],
@@ -3173,17 +3193,12 @@
     "lo_R": 2.5,
     "lo_L": 2.5
    },
-   "collisions_found": 14,
+   "collisions_found": 10,
    "examples": [
     [
      "spine",
      "column",
      36.5013
-    ],
-    [
-     "spine",
-     "B2_env/f",
-     1311.6646
     ],
     [
      "temple_arm_R",
@@ -3199,6 +3214,11 @@
      "temple_arm_L",
      "face_shell",
      139.8001
+    ],
+    [
+     "servo_pan_L/body",
+     "face_shell",
+     543.9476
     ]
    ],
    "detected": true
@@ -3326,5 +3346,5 @@
    "2000": 1.12
   }
  },
- "runtime_s": 154.6
+ "runtime_s": 226.4
 }

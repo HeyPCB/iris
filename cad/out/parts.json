@@ -74,8 +74,8 @@
     "iris_L"
    ],
    "material": "SLA translucent",
-   "volume_cm3": 0.41,
-   "mass_g_each": 0.5,
+   "volume_cm3": 0.37,
+   "mass_g_each": 0.4,
    "bbox_mm": [
     4.1,
     21.5,
@@ -84,7 +84,7 @@
    "brep_valid": true,
    "solids": 1,
    "stl_watertight": true,
-   "stl_volume_cm3": 0.41,
+   "stl_volume_cm3": 0.37,
    "stl_triangles": 2520,
    "files": {
     "step": "cad/out/parts/iris_disc.step",
@@ -104,7 +104,7 @@
     "carrier_L"
    ],
    "material": "PLA/PETG black",
-   "volume_cm3": 2.06,
+   "volume_cm3": 1.98,
    "mass_g_each": 2.5,
    "bbox_mm": [
     7.1,
@@ -114,15 +114,15 @@
    "brep_valid": true,
    "solids": 1,
    "stl_watertight": true,
-   "stl_volume_cm3": 2.05,
-   "stl_triangles": 2732,
+   "stl_volume_cm3": 1.98,
+   "stl_triangles": 2516,
    "files": {
     "step": "cad/out/parts/carrier_L.step",
     "stl": "cad/out/parts/carrier_L.stl"
    },
    "size_kb": {
-    "step": 81,
-    "stl": 133
+    "step": 92,
+    "stl": 123
    }
   },
   {
@@ -134,8 +134,8 @@
     "carrier_R"
    ],
    "material": "PLA/PETG black",
-   "volume_cm3": 1.72,
-   "mass_g_each": 2.1,
+   "volume_cm3": 1.65,
+   "mass_g_each": 2.0,
    "bbox_mm": [
     5.0,
     26.0,
@@ -144,15 +144,15 @@
    "brep_valid": true,
    "solids": 1,
    "stl_watertight": true,
-   "stl_volume_cm3": 1.71,
-   "stl_triangles": 2102,
+   "stl_volume_cm3": 1.65,
+   "stl_triangles": 1876,
    "files": {
     "step": "cad/out/parts/carrier_R.step",
     "stl": "cad/out/parts/carrier_R.stl"
    },
    "size_kb": {
-    "step": 102,
-    "stl": 103
+    "step": 106,
+    "stl": 92
    }
   },
   {
@@ -164,8 +164,8 @@
     "spine"
    ],
    "material": "PETG",
-   "volume_cm3": 18.79,
-   "mass_g_each": 23.9,
+   "volume_cm3": 18.58,
+   "mass_g_each": 23.6,
    "bbox_mm": [
     24.1,
     146.0,
@@ -174,15 +174,15 @@
    "brep_valid": true,
    "solids": 1,
    "stl_watertight": true,
-   "stl_volume_cm3": 18.79,
-   "stl_triangles": 3084,
+   "stl_volume_cm3": 18.58,
+   "stl_triangles": 3104,
    "files": {
     "step": "cad/out/parts/spine.step",
     "stl": "cad/out/parts/spine.stl"
    },
    "size_kb": {
-    "step": 232,
-    "stl": 151
+    "step": 247,
+    "stl": 152
    }
   },
   {
@@ -617,8 +617,8 @@
     "face_shell"
    ],
    "material": "PLA/PETG, painted",
-   "volume_cm3": 99.93,
-   "mass_g_each": 123.9,
+   "volume_cm3": 100.35,
+   "mass_g_each": 124.4,
    "bbox_mm": [
     51.1,
     176.2,
@@ -627,15 +627,15 @@
    "brep_valid": true,
    "solids": 1,
    "stl_watertight": true,
-   "stl_volume_cm3": 99.41,
-   "stl_triangles": 6946,
+   "stl_volume_cm3": 99.83,
+   "stl_triangles": 6978,
    "files": {
     "step": "cad/out/parts/face_shell.step",
     "stl": "cad/out/parts/face_shell.stl"
    },
    "size_kb": {
-    "step": 1408,
-    "stl": 339
+    "step": 1439,
+    "stl": 341
    }
   },
   {
@@ -707,8 +707,8 @@
     "top_bridge"
    ],
    "material": "PETG",
-   "volume_cm3": 37.22,
-   "mass_g_each": 47.3,
+   "volume_cm3": 37.35,
+   "mass_g_each": 47.4,
    "bbox_mm": [
     70.0,
     168.0,
@@ -717,15 +717,15 @@
    "brep_valid": true,
    "solids": 1,
    "stl_watertight": true,
-   "stl_volume_cm3": 37.22,
-   "stl_triangles": 2084,
+   "stl_volume_cm3": 37.35,
+   "stl_triangles": 2132,
    "files": {
     "step": "cad/out/parts/top_bridge.step",
     "stl": "cad/out/parts/top_bridge.stl"
    },
    "size_kb": {
-    "step": 227,
-    "stl": 102
+    "step": 270,
+    "stl": 104
    }
   },
   {
@@ -836,8 +836,8 @@
   "Dowel Dia 3 x 12 (left loose bushing)": 1,
   "Dowel Dia 3 x 8 (right nasal lid pin)": 1,
   "Speaker 28 mm envelope": 1,
-  "B2 envelope (spec 4)": 1,
-  "B4 envelope (spec 4)": 1,
+  "B2 as built (iris-brainstem)": 1,
+  "B4 as built (iris-brow)": 1,
   "SCS0009 envelope (pan_R, ID 1)": 1,
   "Dowel Dia 2 x 8 x2 (pole pins)": 2,
   "Dowel Dia 3 x 16 (temporal lid pin)": 2,
@@ -845,13 +845,13 @@
   "Dowel Dia 3 x 6 (tongue drive pin)": 1,
   "Dowel Dia 3 x 7 (left nasal lid pin)": 1,
   "MR63ZZ": 1,
-  "B1 envelope (spec 4.1)": 1,
-  "B3 envelope (spec 4.4)": 2,
+  "B1 as built (iris-cortex)": 1,
+  "B3 as built (iris-ring)": 2,
   "M2 ball stud": 12,
   "OV2640 module envelope": 1,
   "M2 ball links + rod (26 mm)": 2,
   "M2 ball links + rod": 4
  },
  "assembly_step": "cad/out/iris_assembly.step",
- "assembly_step_kb": 9636
+ "assembly_step_kb": 12902
 }

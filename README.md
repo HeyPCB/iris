@@ -8,8 +8,8 @@ around nine Feetech bus servos and four custom boards.
 
 > **Status: not yet built.** This repository holds the complete mechanical design (parametric
 > CadQuery source, STEP and STL for every printed part), the motion and board-fit checks, and the
-> system documentation. No head has been printed, assembled or powered, and the firmware is not
-> written. The boards are being designed in their own repositories (below).
+> system documentation. The four boards are released in their own repositories (below) and fit the
+> mechanism in CAD. No head has been printed, assembled or powered, and the firmware is not written.
 
 This is the hub repository for the Iris project. Part of [HeyPCB's open robot boards](https://github.com/HeyPCB).
 
@@ -41,8 +41,8 @@ Most robot eyes are either screens or a single pan-tilt camera. Iris tries to mo
 - Inside-out pan forks and exact 1:1 parallelogram linkages: every joint angle equals its servo angle.
 - Motion check over 80 540 pose evaluations: no collisions, at least 0.5 mm between moving parts and
   0.3 mm between static ones ([verification](docs/verification.md)).
-- Board fit for all four boards against the binding mounting positions, ready to re-run with the real
-  KiCad STEP files.
+- Board fit with the four released boards (KiCad STEP): every mounting hole on its boss axis (0.00-0.01
+  mm), no interference over the full motion range, cable routes kept free.
 - Headless renders and a gaze-and-blink animation, regenerated from the source.
 
 ## System
@@ -59,7 +59,8 @@ flowchart LR
   B2 --> SPK["speaker"]
 ```
 
-Details, power tree and the binding interconnect contracts: [docs/system.md](docs/system.md).
+Details, power tree, the binding interconnect contracts and the as-built connector positions:
+[docs/system.md](docs/system.md).
 
 ## Boards
 

@@ -173,9 +173,9 @@ is never (at least 31 deg clear of its 30 deg wide shell sector).
 |---|---|
 | P1 sclera | sphere R 15.0 / 13.4, open at the back over a 65 deg cone (shell spans 0-115 deg from the optical axis), limbus bore Dia 14.64, pole bosses Dia 5 at z +-(9.8 ... 14.2) with Dia 2.05 running bores, keel to the crank stud at (-14, 0, -16) |
 | P2 cornea | clear dome R 9.75, 0.8 mm wall, apex x 16.40, base ring in the limbus bore from x 11.9 |
-| P3 iris disc | Dia 14.5 x 0.8 (x 11.1-11.9), pupil Dia 5.6, black pupil sleeve back to x 9.1 over the lens step, cone ring that clamps B3 outside the LED band (inner r 8.0) and forms the white light-mixing cavity |
-| P4 carrier | right: holder pocket 8.6 x 8.6 for the OV2640 (back x 4.36), FPC exit slot on the temporal side, ring-wire hole; left: same envelope with a printed dummy module. B3 seat Dia 18.2 with key flat (right eye flat down, left flat up) and a 0.7 mm pocket for B3's back-side parts |
-| B3 | board B face at x 7.0, LEDs face the iris |
+| P3 iris disc | Dia 14.5 x 0.8 (x 11.1-11.9), pupil Dia 5.6, black pupil sleeve back to x 9.1 over the lens step, cone ring that clamps B3 on its outer annulus r 8.4-9.0 (the as-built LEDs reach r 8.09) and forms the white light-mixing cavity |
+| P4 carrier | right: holder pocket 8.6 x 8.6 for the OV2640 (back x 4.36), FPC exit slot on the temporal side; left: same envelope with a printed dummy module. B3 seat Dia 18.2 with key flat (right eye flat down, left flat up), a 0.95 mm pocket for B3's back-side parts (0.58 mm as built), and an arc slot (r 6.8-8.4, +-28 deg, temporal) for the four ring wires, whose pads sit at r 7.6 with 2.1 mm pitch |
+| B3 | ordered 0.8 mm; B face at x 7.0 on the camera holder (dummy on the left), F face at 7.8 under the cone ring, LEDs face the iris |
 | Camera | lens front step at x 9.90, 2.0 mm behind the iris front; FPC leaves temporally and runs back along -X as a vertical sheet in the band \|z\| < 3 |
 
 ## Changes from the spec, and why
@@ -193,6 +193,26 @@ radii, 9 mm nasal levers, board planes and holes) are as specified. These non-bi
 | Upper-lid blink | rest +19 -> closed -12 | closes to **-18**, lower lid raised to -12 | at -12 the upper margin is still 8 deg above the resting lower margin and leaves a slit over the lower cornea |
 | Face shell | "stylised hard shell, v1" | rounded box, flat face plane at X +29, almond openings 37 x 24 | B4 needs the shell's inner face >= 2 mm in front of its F face (here 4.5 mm); the pan servos swing to X +24.6 at full look-up |
 | Pan crank | crank on the servo | arm above the coupler plane, stud pointing down | keeps the ball centres at Z -16 with 0.6 mm over the gear cover |
+| B3 clamp (as-built boards) | cone ring inner radius 8.0 | **8.4** | the released ring's LED bodies reach r 8.09 |
+| B3 wires (as-built) | one Dia 2 hole at r 7.35 | arc slot r 6.8-8.4 over +-28 deg | the pads are at r 7.6 with 2.1 mm pitch |
+| B4 windows (as-built) | ALS hole at Y +8, Z 50 | ALS at **Y 0, Z 53.9**; ToF slot and mic holes unchanged; solid pads behind the two touch electrodes | B4's released sensor positions; the pads fill the 4.5 mm air gap that would weaken touch sensing |
+| Cradle side walls | FPC window on the right | plus a **ring-wire window on the left** | B1's J3 (RING_L) opens toward +Y at Y +39.2 |
+| BROW cable | not routed | route kept free and checked (see below) | B1's J4 moved to Z +12.4 to clear the ESP32 antenna |
+
+## Harness routes
+
+- **Camera FPC**: from the right eye's temporal slot straight back as a vertical sheet (|Z| < 3), through
+  the window in the cradle's right side wall, then +Y along B1's front face into J1. Only pan bends it.
+- **Ring wires**: right eye with the FPC, down B1's front face into J2 (mouth -Z); left eye through the
+  window in the left side wall into J3 (mouth +Y).
+- **BROW cable (SH-8, 150 mm)**: up from B1's J4 (Z +12.4) between B1's front parts and the top rail,
+  over B1's top edge, a free service loop above the cradle (the cradle's highest point at full
+  look-down is Z +49), a snap clip under the top bridge at X -30, Y -9, forward beside the centre
+  column (Y -9) at Z 61, over B4's top edge and down into J1 on B4's back. Both rigid parts of the route
+  are modelled as 3.5 mm keep-out tubes and pass the motion check. Path length about 135 mm plus the
+  connector tails.
+- **H1 / H2 (150 mm)**: from B2's front edge (X -33, mouths +X) up to B1's bottom edge (mouths -Z), with
+  a loop in the space between the centre column and B1 that allows the +25 / -30 deg tilt.
 
 ## Firmware-facing numbers
 

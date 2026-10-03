@@ -19,9 +19,14 @@ Run every command from the repository root.
 | `python -m cad.build` | builds every part, exports printed parts (STEP + STL), purchased-part envelopes and the rest-pose assembly | `cad/out/parts/`, `cad/out/envelopes/`, `cad/out/iris_assembly.step`, `cad/out/parts.json` |
 | `python -m cad.check` | motion check over the full pose grid (about 2-3 min) | `cad/out/check.json` |
 | `python -m cad.check --quick` | coarse grid for development (about 30 s) | `cad/out/check_quick.json` (not committed) |
-| `python -m cad.fit` | board fit with the spec section 4 envelopes | `cad/out/fit.json` |
-| `python -m cad.fit --B1 a.step --B2 b.step --B3 c.step --B4 d.step` | board fit with real KiCad STEP exports | `cad/out/fit.json` |
+| `python -m cad.fit` | board fit (real boards if found, else the spec section 4 envelopes) | `cad/out/fit.json` |
 | `python -m cad.render` | renders and the gaze GIF (headless VTK) | `media/` |
+
+**Boards.** `build`, `check`, `fit` and `render` use the released board STEP files when they find them:
+`--boards DIR` (a folder holding `iris-cortex/fab/iris_cortex.step` and so on, or a heypcb-kicad build
+folder), the `IRIS_BOARDS` environment variable, or the four board repositories cloned next to this
+one. `--envelopes` forces the spec section 4 envelopes. The committed outputs were made with the
+released boards.
 
 Built solids and meshes are cached in `cad/out/.cache/` (ignored by git), keyed on a hash of the
 geometry sources, so the check and the renders do not rebuild unchanged parts.

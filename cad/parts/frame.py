@@ -75,6 +75,12 @@ def top_bridge():
         br = box(-15.65, -12.65, s * 45.5, s * 62.5, 24.5, z0 + 0.01)
         br = br.cut(box(-17, -11, s * 47.6, s * 60.4, 31.7, 55.7))
         parts.append(br)
+    # BROW cable clip under the bridge (snap-in, 2.4 mm mouth for the 3.5 mm bundle)
+    cx = P.BROW_CABLE["clip_x"]
+    cy, cz = P.BROW_CABLE["frame"][3][1], P.BROW_CABLE["frame"][3][2]
+    for y0, y1, ly0, ly1 in ((cy - 4.5, cy - 2.1, cy - 2.1, cy - 1.2), (cy + 2.1, cy + 4.5, cy + 1.2, cy + 2.1)):
+        parts.append(box(cx - 3, cx + 3, y0, y1, cz - 1.5, z0 + 0.01))
+        parts.append(box(cx - 3, cx + 3, ly0, ly1, cz - 1.5, cz - 0.8))
     b = fuse_all(parts)
     for side in P.SIDES:
         s = math.copysign(1.0, P.Y_EYE[side])

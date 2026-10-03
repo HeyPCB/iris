@@ -96,3 +96,26 @@ def nasal_pin(side):
 def temporal_pin(side):
     s = math.copysign(1.0, P.Y_EYE[side])
     return purchased.pin_y(P.LID_PIN_D / 2, s * 56.0, s * 71.0)
+
+
+# ------------------------------------------------------------------------------------- harness
+def _tube(points, r):
+    from ..geom import cyl_pts, sphere
+    segs = [cyl_pts(a, b, r) for a, b in zip(points[:-1], points[1:])]
+    joints = [sphere(p, r) for p in points[1:-1]]
+    out = segs[0]
+    if len(segs) > 1 or joints:
+        out = out.fuse(*(segs[1:] + joints)).clean()
+    return out
+
+
+def brow_cable_cradle():
+    """BROW harness (SH-8, 8 x 28 AWG, bundle Dia 3.5) from B1 J4's mouth (brief (17, 7.7), cable up)
+    straight up behind the top rail and over B1's top edge. Rides the cradle; keep-out for the check."""
+    return _tube(P.BROW_CABLE["cradle"], P.BROW_CABLE["r"])
+
+
+def brow_cable_frame():
+    """BROW harness, frame side: from B4 J1 (back of B4, cable up) over B4's top edge, beside the centre
+    column, back under the top bridge to the clip at X -30, then to the start of the service loop."""
+    return _tube(P.BROW_CABLE["frame"], P.BROW_CABLE["r"])

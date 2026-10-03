@@ -87,9 +87,10 @@ other pin bores are press fits (1.95, 2.95).
    the left temple.
 2. Right eye: seat the OV2640 in the holder pocket (lens forward), lead its FPC out through the
    temporal slot and bend it 90 deg (r >= 2 mm) so it runs straight back as a vertical strip.
-3. Solder four 32 AWG wires to each B3's back pads (P1 5V_LED, P2 DIN, P3 GND, P4 GND), pass them out
-   through the carrier's wire hole, and drop B3 into its keyed seat (right eye flat down, left eye
-   flat up), LEDs forward.
+3. Solder four 32 AWG wires to each B3's back pads (P1 5V_LED, P2 DIN, P3 GND, P4 GND; at r 7.6 on the
+   temporal side, 2.1 mm apart), pass them out through the carrier's arc slot, and drop B3 into its
+   keyed seat (right eye flat down, left eye flat up), LEDs forward. **B3 must be 0.8 mm thick** (the
+   fab STEP shows 1.51 mm): a 1.6 mm ring would hold the iris disc 0.7-0.8 mm off its seat.
 4. Paint the inside of the iris cone white and the pupil sleeve black. Insert the iris disc from the
    front: the cone ring clamps B3's outer edge.
 5. Glue the cornea into the limbus bore; it seats on the iris disc.
@@ -107,8 +108,11 @@ other pin bores are press fits (1.95, 2.95).
    the sclera's pole bores and the bosses into the fork arms (press fit in the fork).
 6. Snap the 26 mm pan couplers onto the keel and crank studs.
 7. Screw B1 onto its four bosses, F side toward the eyes. Feed the camera FPC through the window in the
-   right side wall and into J1 (bottom contact: fingers toward B1). Plug the ring cables into J2 (right
-   eye) and J3 (left eye). Tape the FPC to the right fork spine with a loop that allows +-35 deg pan.
+   right side wall and into J1 (bottom contact: fingers toward B1). Plug the right ring wires into J2
+   (bottom edge) and lead the left ring wires through the window in the left side wall into J3. Tape
+   the FPC to the right fork spine with a loop that allows +-35 deg pan.
+8. Plug the BROW cable into J4 (front of B1, mouth up at Z +12.4), run it straight up between B1's
+   parts and the top rail, and tie it to the top rail with a 2.5 mm cable tie.
 
 ## 6. Frame and lid servos
 
@@ -146,17 +150,21 @@ other pin bores are press fits (1.95, 2.95).
 
 1. Screw the brow servos (IDs 9 L, 8 R) to the brackets under the top bridge, spline forward. Fit the
    brow hubs (P13a) on the splines with the D-flat up at neutral.
-2. Screw B2 onto the base-plate bosses (USB-C mouths at the back). Route H1 and H2 (150 mm) from B2's
-   front edge up to B1's bottom edge with a service loop that allows +25 / -30 deg tilt. Plug the nine
+2. Screw B2 onto the base-plate bosses (USB-C mouths at the back; the header tails clear the base plate
+   by 2.2 mm). Route H1 and H2 (150 mm) from B2's front edge (J5, J6, mouths forward) up to B1's
+   bottom edge with a service loop that allows +25 / -30 deg tilt. Plug the nine
    servo leads into J10-J19 per the port map in [system.md](system.md) (pad 1 = DATA; check the
    D / V / G silkscreen). Connect the speaker to J7 and seat it in the chin ring.
-3. Screw B4 to the four bosses inside the face shell from its back side (sensors toward the shell's
-   ToF slot, ALS hole and mic holes). Plug the BROW cable (150 mm) into B4 J1.
-4. Glue the magnets into the face shell pads and the matching pockets in the side plates and the base
+3. Screw B4 to the four bosses inside the face shell from its back side (ToF under the slot, ALS under
+   the hole above it, mics under the two Dia 1 holes, touch electrodes against the two solid pads).
+4. Lead the BROW cable from the cradle in a loop of about 40 mm above the cradle, snap it into the clip
+   under the top bridge (X -30, Y -9), run it forward beside the centre column, over B4's top edge and
+   plug it into J1 on B4's back.
+5. Glue the magnets into the face shell pads and the matching pockets in the side plates and the base
    plate posts.
-5. Offer the face shell up: the brow hubs pass through the Dia 10 holes; push the brows onto the D-keyed
-   hub ends. Plug the BROW cable into B1 J4 before the shell closes.
-6. Screw the back cover to the base plate from below (four M2).
+6. Offer the face shell up: the brow hubs pass through the Dia 10 holes; push the brows onto the D-keyed
+   hub ends.
+7. Screw the back cover to the base plate from below (four M2).
 
 ## 9. First power-up
 
