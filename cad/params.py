@@ -5,7 +5,7 @@ Head frame H (all mm, degrees):
   +X forward (out of the face), +Y robot-left, +Z up.
   Right eye centre (0, -39, 0), left eye centre (0, +39, 0). The interocular axis is the Y axis.
 
-Sources: `spec.md` is the Iris system specification v0.1 (section numbers in the comments).
+Sources: the Iris system specification v0.1 (not published; section numbers in the comments).
 Rows marked BINDING come from spec section 2.8 or section 4 and are contracts with the board designers.
 Rows marked CHANGED differ from a non-binding spec value; docs/mechanism.md says why.
 

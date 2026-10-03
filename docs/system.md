@@ -2,8 +2,9 @@
 
 This page is the system view: which board does what, how power flows, and the binding interconnect
 contracts between the four board designs. It copies the contracts from the Iris system
-specification v0.1 (section 5) so the board repositories and this hub agree. If a table here and a
-board repository disagree, the spec wins until a spec revision changes it.
+specification v0.1 (section 5; the spec itself is not published) so the board repositories and
+this hub agree. If a table here and a board repository disagree, this page wins until a spec
+revision changes it.
 
 ## Boards
 

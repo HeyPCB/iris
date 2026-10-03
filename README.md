@@ -118,6 +118,11 @@ All images are rendered headlessly from the CAD by `python -m cad.render`.
 | [`docs/verification.md`](docs/verification.md) | what was checked in CAD and what must be bench-tested |
 | [`media/`](media/) | renders and the animation |
 
+"Spec N" in these files names a section of the Iris system specification v0.1, the design-input
+document the boards and this CAD were drawn from. The spec itself is not published: its binding
+tables (interconnect contracts, board mounting) are copied in [`docs/system.md`](docs/system.md),
+and [`docs/mechanism.md`](docs/mechanism.md) lists every place the build departs from it.
+
 To regenerate everything:
 
 ```sh
